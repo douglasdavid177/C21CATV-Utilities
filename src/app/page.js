@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 export default function Home() {
   const [onClient, setOnClient] = useState(false);
@@ -8,7 +7,7 @@ export default function Home() {
   }, []);
   return (
     <div>
-      <div className="h-12"></div>
+      <div className="h-16"></div>
       {onClient && (
         <div className="grow">
           <iframe
@@ -16,7 +15,7 @@ export default function Home() {
             title="Styled Calendar"
             className="styled-calendar-container"
             //style="width: 100%; border: none;"
-            style={{ width: "100%", height: "50vh", border: "none" }}
+            style={{ width: "100%", border: "none" }}
             data-cy="calendar-embed-iframe"
           ></iframe>
           <script
