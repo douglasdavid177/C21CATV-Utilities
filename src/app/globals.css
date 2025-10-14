@@ -10,6 +10,11 @@
   --foreground: #ededed;
 }
 
+@theme {
+  --color-main-gold: #beaf87;
+  --color-main-black: #121212;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
