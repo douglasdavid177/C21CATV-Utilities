@@ -1,7 +1,8 @@
 "use client";
 import { motion } from "motion/react";
 import { useContext, useState, useEffect } from "react";
-import Link from "next/link";
+//import Link from "next/link";
+import { Link } from "next-view-transitions";
 //import { ViewTransitions } from "next-view-transitions";
 
 import { NavigationContext } from "./navigation-context";

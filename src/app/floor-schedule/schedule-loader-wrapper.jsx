@@ -10,17 +10,17 @@ export default function ScheduleWithLoaderWrapper() {
   const [doneLoading, setDoneLoading] = useState(false);
   const [targScale, setTargScale] = useState(0.9);
   const [targOpacity, setTarOpacity] = useState(0);
-  const [onClient, setOnClient] = useState(false);
-  useEffect(() => {
-    setOnClient(true);
-  }, []);
+  // const [onClient, setOnClient] = useState(false);
+  // useEffect(() => {
+  //   setOnClient(true);
+  // }, []);
   useEffect(() => {
     const timer = setTimeout(() => {
       // This timeout exists because it's impossible to tell when iframe has finished rendering
       // and experience shows this to be a safe amount of time
       setTarOpacity(1);
       setTargScale(1);
-    }, 1700);
+    }, 1750);
 
     // Cleanup function: Clear the timeout if the component unmounts before the delay
     return () => clearTimeout(timer);

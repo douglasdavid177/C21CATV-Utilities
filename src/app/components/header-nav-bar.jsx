@@ -5,6 +5,8 @@ import NavPanel from "./nav-panel";
 import { useContext, useState } from "react";
 import { NavigationContext } from "./navigation-context";
 import NavMenu from "./nav-menu";
+import { motion } from "motion/react";
+// import { PrimaryButton } from "./buttons";
 
 export default function HeaderBar() {
   const { openMenu, setOpenMenu } = useContext(NavigationContext);
@@ -18,6 +20,7 @@ export default function HeaderBar() {
           viewTransitionName: "nav-header-bg",
         }}
       ></div>
+      <NavMenu openMenu={openMenu} setOpenMenu={setOpenMenu} />
 
       <div
         className="fixed top-0 w-full ml-auto mr-auto h-16 //pt-4 flex //flex-row-reverse items-center justify-between //bg-red-500 text-4xl"
@@ -37,19 +40,33 @@ export default function HeaderBar() {
           ></div>
         )} */}
 
+        {/* <PrimaryButton
+          text={"Floor schedule"}
+          route="/floor-schedule"
+          delayAmt={0.5}
+        /> */}
+
         <div
           className="pl-4 pr-4 flex flex-row-reverse gap-8 items-center"
-          style={{ viewTransitionName: "nav-heade" }}
+          //style={{ viewTransitionName: "nav-heade" }}
         >
-          <button
-            className="cursor-pointer z-200"
-            onClick={(e) => {
-              e.stopPropagation(); // This prevents the button click from also activating the button click of the header bg
-              setOpenMenu(!openMenu);
-            }}
-          >
-            <AiOutlineMenu />
-          </button>
+          {!openMenu && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.25, delay: 0.1 }}
+            >
+              <button
+                className="cursor-pointer z-200"
+                onClick={(e) => {
+                  e.stopPropagation(); // This prevents the button click from also activating the button click of the header bg
+                  setOpenMenu(!openMenu);
+                }}
+              >
+                <AiOutlineMenu />
+              </button>
+            </motion.div>
+          )}
 
           {/* <h2 className="text-[#727273] text-xl sm:text-3xl">
             Floor Time Schedule
@@ -66,7 +83,6 @@ export default function HeaderBar() {
         </div>
       </div>
       {/* <NavPanel openMenu={openMenu} setOpenMenu={setOpenMenu} /> */}
-      <NavMenu openMenu={openMenu} setOpenMenu={setOpenMenu} />
     </div>
   );
 }

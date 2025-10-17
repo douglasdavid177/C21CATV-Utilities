@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "motion/react";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import {
   AiFillCalendar,
   AiFillHome,
@@ -16,17 +16,19 @@ export default function NavMenu(props) {
             className="fixed inset-0"
             style={{
               background: "rgb(0 0 0/0.5)",
+              viewTransitionName: "nav-menu-bg",
             }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.35 }}
+            initial={{ opacity: 0, scale: 1 }}
+            animate={{ opacity: 1, scale: 1.0 }}
+            exit={{ opacity: 0, scale: 1 }}
+            transition={{ duration: 0.35, opacity: { duration: 0.35 } }}
             onClick={() => {
               if (!props.openMenu) return;
               props.setOpenMenu(false);
             }}
           ></motion.div>
         )}
+
         {props.openMenu && (
           <motion.div
             key={"panel"}
@@ -37,16 +39,20 @@ export default function NavMenu(props) {
               backdropFilter: "blur(0.7rem)",
               background: "rgb(18 18 18/0.75)",
               //translate: "-50% -50%",
-              viewTransitionName: "nav-header-content",
+              viewTransitionName: "nav-menu-panel",
             }}
             // initial={{ scale: "150%", y: "20%", opacity: 0 }}
             // animate={{ scale: "100%", y: "0%", opacity: 1 }}
             // exit={{ scale: "120%", y: "10%", opacity: 0 }}
 
-            initial={{ x: "-100%" }}
-            animate={{ x: "0%" }}
-            exit={{ x: "-100%" }}
-            transition={{ duration: 0.5, ease: [0.3, 1, 0.4, 1] }}
+            initial={{ x: "-100%", opacity: 0.99 }}
+            animate={{ x: "0%", opacity: 1 }}
+            exit={{ x: "-100%", opacity: 0.99 }}
+            transition={{
+              duration: 1.5,
+              ease: [0.3, 1, 0.4, 1],
+              x: { duration: 0.5, ease: [0.3, 1, 0.4, 1] },
+            }}
             onClick={(e) => {
               // Without this, clicking anywhere inside the nav panel would also register on the overlay behind it,
               // therefore closing the nav panel prematurely
