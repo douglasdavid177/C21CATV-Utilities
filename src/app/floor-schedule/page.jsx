@@ -1,9 +1,9 @@
-import FloorSchedulePage from "./floor-schedule-page";
+import ScheduleWithLoaderWrapper from "./schedule-loader-wrapper";
 
 export default function Home() {
   return (
-    <div>
-      <FloorSchedulePage />
+    <div className="pt-16">
+      <ScheduleWithLoaderWrapper />
     </div>
   );
 }

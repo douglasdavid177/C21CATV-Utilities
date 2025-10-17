@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import HeaderBar from "./components/header-nav-bar";
 import NavContext from "./components/navigation-context";
+import { ViewTransitions } from "next-view-transitions";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,15 +21,18 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <NavContext>
-          {children}
-          <HeaderBar />
-        </NavContext>
-      </body>
-    </html>
+    <ViewTransitions>
+      <html lang="en" style={{ scrollbarGutter: "stable" }}>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased `}
+        >
+          <NavContext>
+            {children}
+            {/* <div style={{ viewTransitionName: "nav-button" }}> */}
+            {/* </div> */}
+          </NavContext>
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }

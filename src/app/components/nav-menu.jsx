@@ -37,6 +37,7 @@ export default function NavMenu(props) {
               backdropFilter: "blur(0.7rem)",
               background: "rgb(18 18 18/0.75)",
               //translate: "-50% -50%",
+              viewTransitionName: "nav-header-content",
             }}
             // initial={{ scale: "150%", y: "20%", opacity: 0 }}
             // animate={{ scale: "100%", y: "0%", opacity: 1 }}
@@ -54,7 +55,7 @@ export default function NavMenu(props) {
           >
             Menu
             <hr />
-            <div className="flex flex-col items-start mt-8 gap-8">
+            <div className="flex flex-col items-start mt-16 gap-8">
               <Link
                 href="/"
                 className="text-xl font-bold flex items-center gap-4"

@@ -15,16 +15,18 @@ export default function HeaderBar() {
         style={{
           background: "rgb(18 18 18/0.75)",
           backdropFilter: "blur(0.7rem)",
+          viewTransitionName: "nav-header-bg",
         }}
       ></div>
 
       <div
-        className="fixed top-0 w-full ml-auto mr-auto h-16 pt-4 flex //flex-row-reverse items-center justify-between //bg-red-500 text-4xl"
+        className="fixed top-0 w-full ml-auto mr-auto h-16 //pt-4 flex //flex-row-reverse items-center justify-between //bg-red-500 text-4xl"
         // style={{
         //   background: "rgb(18 18 18/0.75)",
         //   backdropFilter: "blur(0.7rem)",
         // }}
         onClick={() => setOpenMenu(false)}
+        style={{ viewTransitionName: "nav-header-content" }}
       >
         {/* {true && (
           <div
@@ -35,7 +37,10 @@ export default function HeaderBar() {
           ></div>
         )} */}
 
-        <div className="pl-4 pr-4 flex flex-row-reverse gap-8 items-center">
+        <div
+          className="pl-4 pr-4 flex flex-row-reverse gap-8 items-center"
+          style={{ viewTransitionName: "nav-heade" }}
+        >
           <button
             className="cursor-pointer z-200"
             onClick={(e) => {

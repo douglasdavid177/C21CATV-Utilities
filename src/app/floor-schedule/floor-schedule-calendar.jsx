@@ -1,13 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
-export default function FloorSchedulePage() {
+export default function FloorScheduleCalendar({ setDoneLoading }) {
   const [onClient, setOnClient] = useState(false);
   useEffect(() => {
     setOnClient(true);
   }, []);
   return (
     <div>
-      <div className="h-20"></div>
+      {/* <div className="h-20"></div> */}
       {onClient && (
         <div className="grow pl-4 pr-4 pb-4">
           <iframe
@@ -16,6 +16,8 @@ export default function FloorSchedulePage() {
             className="styled-calendar-container"
             style={{ width: "100%", border: "none" }}
             data-cy="calendar-embed-iframe"
+            loading="eager"
+            onLoad={() => setDoneLoading(true)}
           ></iframe>
           <script
             async
