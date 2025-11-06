@@ -14,7 +14,7 @@ export default function NavContext({ children }) {
 
   useEffect(() => {
     // This code will run whenever the pathname changes
-    console.log("Route changed to:", pathname);
+    //console.log("Route changed to:", pathname);
     setOpenMenu(false);
     // Perform actions based on the new route
   }, [pathname]); // Depend on pathname to trigger the effect on change
@@ -31,7 +31,7 @@ export default function NavContext({ children }) {
     if (!document.startViewTransition) {
       //const timer = setTimeout(setShowContent(true), 0); // For some reason this prevents hydration issues
       setShowContent(true);
-      console.log("showing");
+      //console.log("showing");
 
       return;
     }
@@ -39,7 +39,7 @@ export default function NavContext({ children }) {
     // Trigger the view transition
     document.startViewTransition(() => {
       setShowContent(true);
-      console.log("showing");
+      //console.log("showing");
     });
   }, []);
 
@@ -50,7 +50,11 @@ export default function NavContext({ children }) {
   return (
     <NavigationContext.Provider value={{ openMenu, setOpenMenu }}>
       {showContent && [children]}
-      <HeaderBar />
+      <div
+      // style={{ viewTransitionName: "navv" }}
+      >
+        <HeaderBar />
+      </div>
       {/* {children} */}
     </NavigationContext.Provider>
   );

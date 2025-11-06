@@ -95,3 +95,16 @@ export function MenuOpenButton({ delayAmt, text }) {
     </button>
   );
 }
+
+export function NavMenuLink({ text, icon, url }) {
+  return (
+    <Link
+      href={url}
+      className="text-xl font-bold flex items-center gap-4"
+      //onClick={() => setOpenMenu(false)}
+    >
+      {icon}
+      {text}
+    </Link>
+  );
+}

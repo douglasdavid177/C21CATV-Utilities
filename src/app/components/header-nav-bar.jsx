@@ -11,7 +11,13 @@ import { motion } from "motion/react";
 export default function HeaderBar() {
   const { openMenu, setOpenMenu } = useContext(NavigationContext);
   return (
-    <div>
+    <div
+      style={
+        {
+          // viewTransitionName: "nav",
+        }
+      }
+    >
       <div
         className="fixed top-0 w-full ml-auto mr-auto h-16 pt-4"
         style={{
@@ -46,10 +52,7 @@ export default function HeaderBar() {
           delayAmt={0.5}
         /> */}
 
-        <div
-          className="pl-4 pr-4 flex flex-row-reverse gap-8 items-center"
-          //style={{ viewTransitionName: "nav-heade" }}
-        >
+        <div className="pl-4 pr-4 flex flex-row-reverse gap-8 items-center">
           {!openMenu && (
             <motion.div
               initial={{ opacity: 0 }}
@@ -82,7 +85,7 @@ export default function HeaderBar() {
           />
         </div>
       </div>
-      {/* <NavPanel openMenu={openMenu} setOpenMenu={setOpenMenu} /> */}
+      {/* <NavMenu openMenu={openMenu} setOpenMenu={setOpenMenu} /> */}
     </div>
   );
 }
