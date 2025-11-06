@@ -77,7 +77,7 @@ export default function HeaderBar() {
         </div>
         <div className="pr-4 pl-4 //sm:pr-20">
           <Image
-            src="/c21ca-logo.svg"
+            src="/C21CA-logo.svg"
             width={"150"}
             height={40}
             alt="C21 Coastal Alliance Logo "
