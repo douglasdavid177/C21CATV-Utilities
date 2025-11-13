@@ -2,11 +2,13 @@
 import { motion } from "motion/react";
 import { useContext, useState, useEffect } from "react";
 //import Link from "next/link";
-import { Link } from "next-view-transitions";
+import { useTransitionRouter } from "next-view-transitions";
+import Link from "next/link";
 //import { ViewTransitions } from "next-view-transitions";
 
 import { NavigationContext } from "./navigation-context";
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
+import { usePathname } from "next/navigation";
 
 export function PrimaryButton({ text, route, delayAmt }) {
   // const [delay, setDelay] = useState(0);
@@ -24,12 +26,15 @@ export function PrimaryButton({ text, route, delayAmt }) {
   //   };
   // }, []);
 
+  const tRouter = useTransitionRouter();
+
   return (
     <Link
       href={route}
       className=" cursor-pointer"
-      onClick={() => {
-        // Move to calendar page
+      onClick={(e) => {
+        e.preventDefault();
+        tRouter.push(route);
       }}
     >
       <motion.div
@@ -97,11 +102,26 @@ export function MenuOpenButton({ delayAmt, text }) {
 }
 
 export function NavMenuLink({ text, icon, url }) {
+  const path = usePathname();
+  const tRouter = useTransitionRouter();
+  const { setOpenMenu } = useContext(NavigationContext);
+
   return (
     <Link
       href={url}
       className="text-xl font-bold flex items-center gap-4"
-      //onClick={() => setOpenMenu(false)}
+      onClick={(e) => {
+        e.preventDefault();
+
+        if (path == url) {
+          console.log("nope");
+
+          e.stopPropagation();
+          setOpenMenu(false);
+        } else {
+          tRouter.push(url);
+        }
+      }}
     >
       {icon}
       {text}

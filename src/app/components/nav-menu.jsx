@@ -1,13 +1,20 @@
 import { AnimatePresence, motion } from "motion/react";
-import { Link } from "next-view-transitions";
+// import { Link } from "next-view-transitions";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+// import { useRouter } from "next/router";
+import { useTransitionRouter } from "next-view-transitions";
 import {
   AiFillCalendar,
   AiFillHome,
   AiFillQuestionCircle,
 } from "react-icons/ai";
+import { NavMenuLink } from "./buttons";
 // import { NavMenuLink } from "./buttons";
 
 export default function NavMenu(props) {
+  let path = usePathname();
+  let router = useTransitionRouter();
   return (
     <div
       style={
@@ -86,29 +93,17 @@ export default function NavMenu(props) {
             Menu
             <hr />
             <div className="flex flex-col items-start mt-16 gap-8">
-              <Link
-                href="/"
-                className="text-xl font-bold flex items-center gap-4"
-                //onClick={() => setOpenMenu(false)}
-              >
-                <AiFillHome />
-                Home
-              </Link>
-              {/* <NavMenuLink text="home" icon={<AiFillHome />} url="/" /> */}
-              <Link
-                href="/"
-                className="text-xl font-bold flex items-center gap-4"
-              >
-                <AiFillQuestionCircle />
-                About App
-              </Link>
-              <Link
-                href="/floor-schedule"
-                className="text-xl font-bold flex items-center gap-4"
-              >
-                <AiFillCalendar />
-                Floor Schedule
-              </Link>
+              <NavMenuLink text={"Home"} icon={<AiFillHome />} url={"/"} />
+              <NavMenuLink
+                text={"About"}
+                icon={<AiFillQuestionCircle />}
+                url={"/"}
+              />
+              <NavMenuLink
+                text={"Floor Schedule"}
+                icon={<AiFillCalendar />}
+                url={"/floor-schedule"}
+              />
             </div>
           </div>
         </motion.div>
