@@ -37,6 +37,11 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+a:active {
+  filter: brightness(105%);
+  transform: scale(1.02) translateX(1%);
+}
+
 ::view-transition-group(root) {
   z-index: auto !important;
 }

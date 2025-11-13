@@ -105,11 +105,22 @@ export function NavMenuLink({ text, icon, url }) {
   const path = usePathname();
   const tRouter = useTransitionRouter();
   const { setOpenMenu } = useContext(NavigationContext);
+  const [beingHovered, setBeingHovered] = useState(false);
+  const [onClient, setOnClient] = useState(false);
+  useEffect(() => {
+    setOnClient(true);
+  }, []);
 
   return (
     <Link
+      onMouseEnter={() => {
+        setBeingHovered(true);
+      }}
+      onMouseLeave={() => {
+        setBeingHovered(false);
+      }}
       href={url}
-      className="text-xl font-bold flex items-center gap-4"
+      className="text-xl font-bold flex items-center gap-4 w-full h-16"
       onClick={(e) => {
         e.preventDefault();
 
@@ -124,7 +135,33 @@ export function NavMenuLink({ text, icon, url }) {
       }}
     >
       {icon}
-      {text}
+      <motion.span
+        style={{
+          color: onClient && url == path ? "var(--color-main-gold)" : "",
+        }}
+        // animate={{
+        //   scale: beingHovered && url != path ? 1.075 : 1,
+        //   x: beingHovered && url != path ? "3.5%" : "0%",
+        // }}
+      >
+        {text}
+      </motion.span>
+      {url != path && (
+        <motion.span
+          className="text-main-gold"
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: beingHovered ? 1 : 0,
+            x: beingHovered ? "0%" : "-50%",
+          }}
+          transition={{
+            ease: [0.1, 0.1, 0, 1],
+            duration: 0.15,
+          }}
+        >
+          <AiOutlineArrowRight />
+        </motion.span>
+      )}
     </Link>
   );
 }

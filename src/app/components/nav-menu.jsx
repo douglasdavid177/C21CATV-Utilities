@@ -92,7 +92,7 @@ export default function NavMenu(props) {
           >
             Menu
             <hr />
-            <div className="flex flex-col items-start mt-16 gap-8">
+            <div className="flex flex-col items-start mt-16 gap-0">
               <NavMenuLink text={"Home"} icon={<AiFillHome />} url={"/"} />
               <NavMenuLink
                 text={"About"}
