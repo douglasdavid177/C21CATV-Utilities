@@ -13,9 +13,19 @@ export default function NavContext({ children }) {
   const router = useTransitionRouter();
 
   useEffect(() => {
+    if (openMenu) {
+      document.body.style.overflowY = "hidden";
+    } else {
+      document.body.style.overflowY = "";
+    }
+  }, [openMenu]);
+
+  useEffect(() => {
     // This code will run whenever the pathname changes
     //console.log("Route changed to:", pathname);
     setOpenMenu(false);
+    document.documentElement.scrollTo({ top: 0, behavior: "instant" });
+
     // Perform actions based on the new route
   }, [pathname]); // Depend on pathname to trigger the effect on change
 
@@ -49,6 +59,10 @@ export default function NavContext({ children }) {
   // }
   return (
     <NavigationContext.Provider value={{ openMenu, setOpenMenu }}>
+      {/* <div
+        className="fixed inset-0 overflow-auto"
+        style={{ scrollbarGutter: "stable", scrollBehavior: "smooth" }}
+      > */}
       {showContent && [children]}
       <div
       // style={{ viewTransitionName: "navv" }}
@@ -56,6 +70,7 @@ export default function NavContext({ children }) {
         <HeaderBar />
       </div>
       {/* {children} */}
+      {/* </div> */}
     </NavigationContext.Provider>
   );
 }

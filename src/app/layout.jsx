@@ -3,6 +3,7 @@ import "./globals.css";
 import HeaderBar from "./components/header-nav-bar";
 import NavContext from "./components/navigation-context";
 import { ViewTransitions } from "next-view-transitions";
+import ScrollRestorationDisabler from "./components/scroll-restoration-disabler";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,7 +23,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <ViewTransitions>
-      <html lang="en" style={{ scrollbarGutter: "stable" }}>
+      <html
+        lang="en"
+        style={{ scrollbarGutter: "stable", scrollBehavior: "smooth" }}
+      >
+        <ScrollRestorationDisabler />
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased `}
         >

@@ -7,7 +7,11 @@ import Link from "next/link";
 //import { ViewTransitions } from "next-view-transitions";
 
 import { NavigationContext } from "./navigation-context";
-import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
+import {
+  AiOutlineArrowRight,
+  AiOutlineArrowLeft,
+  AiFillLeftCircle,
+} from "react-icons/ai";
 import { usePathname } from "next/navigation";
 
 export function PrimaryButton({ text, route, delayAmt }) {
@@ -92,12 +96,31 @@ export function MenuOpenButton({ delayAmt, text }) {
           delay: delayAmt > 0 ? delayAmt : 0.35,
           ease: [0.1, 0.1, 0, 1],
         }}
-        className="cursor-pointer w-auto min-w-40 font-bold p-4 pl-6 pr-6 text-xl sm:text-2xl text-main-gold  flex //flex-row-reverse items-center gap-2"
+        className="cursor-pointer w-auto min-w-40 font-bold p-4 pl-6 pr-6 text-xl //sm:text-2xl text-main-gold  flex //flex-row-reverse items-center gap-2"
       >
         <AiOutlineArrowRight />
         <p>{text ? text : "View menu"}</p>
       </motion.div>
     </button>
+  );
+}
+
+export default function SpanLinkBasic({ text, url }) {
+  const tRouter = useTransitionRouter();
+
+  return (
+    <span className="text-main-gold">
+      <Link
+        href={url}
+        onClick={(e) => {
+          e.preventDefault();
+
+          tRouter.push(url);
+        }}
+      >
+        {text}
+      </Link>
+    </span>
   );
 }
 
@@ -162,6 +185,41 @@ export function NavMenuLink({ text, icon, url }) {
           <AiOutlineArrowRight />
         </motion.span>
       )}
+      {url == path && (
+        <span className="text-main-gold">
+          {/* <AiFillLeftCircle /> */}
+          <div className=" rounded-full bg-main-gold w-2 h-2"></div>
+        </span>
+      )}
+    </Link>
+  );
+}
+
+export function HomeLinkWrapper({ children }) {
+  const tRouter = useTransitionRouter();
+  const path = usePathname();
+  const { openMenu, setOpenMenu } = useContext(NavigationContext);
+
+  return (
+    <Link
+      href={"/"}
+      style={
+        {
+          // cursor: path == "/" ? "auto" : "pointer",
+        }
+      }
+      onClick={(e) => {
+        e.preventDefault();
+
+        if (path == "/") {
+          e.stopPropagation();
+          setOpenMenu(false);
+        } else {
+          tRouter.push("/");
+        }
+      }}
+    >
+      {children}
     </Link>
   );
 }

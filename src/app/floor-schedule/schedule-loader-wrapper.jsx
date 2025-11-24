@@ -42,7 +42,7 @@ export default function ScheduleWithLoaderWrapper() {
               opacity: 1,
             }}
             exit={{ opacity: 0 }}
-            transition={{ delay: 1.2, duration: 0.2 }}
+            transition={{ delay: 1.2, duration: 0.3 }}
           >
             {<LoadingIndicator />}
           </motion.div>

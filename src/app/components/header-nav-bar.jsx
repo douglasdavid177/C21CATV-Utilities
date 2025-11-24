@@ -6,6 +6,7 @@ import { useContext, useState } from "react";
 import { NavigationContext } from "./navigation-context";
 import NavMenu from "./nav-menu";
 import { motion } from "motion/react";
+import { HomeLinkWrapper } from "./buttons";
 // import { PrimaryButton } from "./buttons";
 
 export default function HeaderBar() {
@@ -19,11 +20,11 @@ export default function HeaderBar() {
       }
     >
       <div
-        className="fixed top-0 w-full ml-auto mr-auto h-16 pt-4"
+        className="fixed top-0 w-full ml-auto mr-auto h-16 pt-4 backdrop-blur-sm"
         style={{
           background: "rgb(18 18 18/0.75)",
-          backdropFilter: "blur(0.7rem)",
-          viewTransitionName: "nav-header-bg",
+          //backdropFilter: "blur(0.7rem)",
+          //viewTransitionName: "nav-header-bg",
         }}
       ></div>
       <NavMenu openMenu={openMenu} setOpenMenu={setOpenMenu} />
@@ -76,13 +77,15 @@ export default function HeaderBar() {
           </h2> */}
         </div>
         <div className="pr-4 pl-4 //sm:pr-20">
-          <Image
-            src="/C21CA-logo.svg"
-            width={"150"}
-            height={40}
-            alt="C21 Coastal Alliance Logo "
-            style={{ objectFit: "contain", display: "block", height: "45px" }}
-          />
+          <HomeLinkWrapper>
+            <Image
+              src="/C21CA-logo.svg"
+              width={"150"}
+              height={40}
+              alt="C21 Coastal Alliance Logo "
+              style={{ objectFit: "contain", display: "block", height: "45px" }}
+            />
+          </HomeLinkWrapper>
         </div>
       </div>
       {/* <NavMenu openMenu={openMenu} setOpenMenu={setOpenMenu} /> */}

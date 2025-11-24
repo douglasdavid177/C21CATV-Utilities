@@ -8,10 +8,17 @@ export default function Home() {
     <div className="min-h-[100dvh] flex flex-col-reverse sm:flex-row justify-between pt-20">
       <ResizableHeroImage />
       {/* <div className="w-[5vw]"></div> */}
-      <div className="text-4xl sm:text-5xl lg:text-6xl flex flex-col items-center justify-center //sm:items-end ml-auto mr-auto //sm:mr-8 //sm:mr-[max(auto,8rem)] text-center //sm:text-right font-bold leading-14 lg:leading-20">
-        <h1>Tierra Verde Office</h1>
-        <h1>Web Utilities</h1>
-        <div className="h-4 sm:h-[20vh]"></div>
+      <div className=" flex flex-col items-center justify-center //sm:items-end ml-3 mr-3 sm:ml-auto sm:mr-auto //sm:mr-8 //sm:mr-[max(auto,8rem)] text-center //sm:text-right  ">
+        <span className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-14 sm:leading-16 lg:leading-20">
+          <h1>Tierra Verde Office</h1>
+          <h1>Web Utilities</h1>
+        </span>
+        <div className="h-4"></div>
+
+        <p className="text-base text-medium-grey">
+          A collection of small digital tools for agents
+        </p>
+        <div className="h-8 sm:h-16"></div>
         <PrimaryButton
           text={"Floor schedule"}
           route="/floor-schedule"
