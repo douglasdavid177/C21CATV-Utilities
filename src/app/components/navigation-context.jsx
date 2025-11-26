@@ -63,12 +63,15 @@ export default function NavContext({ children }) {
         className="fixed inset-0 overflow-auto"
         style={{ scrollbarGutter: "stable", scrollBehavior: "smooth" }}
       > */}
+
       {showContent && [children]}
       <div
       // style={{ viewTransitionName: "navv" }}
+      // style={{ zIndex: 3 }}
       >
         <HeaderBar />
       </div>
+
       {/* {children} */}
       {/* </div> */}
     </NavigationContext.Provider>

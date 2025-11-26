@@ -2,10 +2,10 @@
 import { AiOutlineMenu } from "react-icons/ai";
 import Image from "next/image";
 import NavPanel from "./nav-panel";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { NavigationContext } from "./navigation-context";
-import NavMenu from "./nav-menu";
-import { motion } from "motion/react";
+import NavMenu, { NavMenuBG } from "./nav-menu";
+import { AnimatePresence, motion } from "motion/react";
 import { HomeLinkWrapper } from "./buttons";
 // import { PrimaryButton } from "./buttons";
 
@@ -19,6 +19,8 @@ export default function HeaderBar() {
         }
       }
     >
+      {/* <NavMenuBG /> */}
+
       <div
         className="fixed top-0 w-full ml-auto mr-auto h-16 pt-4 backdrop-blur-sm"
         style={{
@@ -27,7 +29,6 @@ export default function HeaderBar() {
           //viewTransitionName: "nav-header-bg",
         }}
       ></div>
-      <NavMenu openMenu={openMenu} setOpenMenu={setOpenMenu} />
 
       <div
         className="fixed top-0 w-full ml-auto mr-auto h-16 //pt-4 flex //flex-row-reverse items-center justify-between //bg-red-500 text-4xl"
@@ -76,7 +77,8 @@ export default function HeaderBar() {
             Floor Time Schedule
           </h2> */}
         </div>
-        <div className="pr-4 pl-4 //sm:pr-20">
+
+        <div className="pr-4 pl-4 //sm:pr-20 relative z-5">
           <HomeLinkWrapper>
             <Image
               src="/C21CA-logo.svg"
@@ -89,6 +91,10 @@ export default function HeaderBar() {
         </div>
       </div>
       {/* <NavMenu openMenu={openMenu} setOpenMenu={setOpenMenu} /> */}
+
+      <NavMenuBG />
+
+      <NavMenu openMenu={openMenu} />
     </div>
   );
 }

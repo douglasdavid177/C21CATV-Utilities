@@ -16,7 +16,9 @@ export default function Home() {
         <div className="h-4"></div>
 
         <p className="text-base text-medium-grey">
-          A collection of small digital tools for agents
+          A collection of small web-based tools
+          <br />
+          to make life easier for agents
         </p>
         <div className="h-8 sm:h-16"></div>
         <PrimaryButton

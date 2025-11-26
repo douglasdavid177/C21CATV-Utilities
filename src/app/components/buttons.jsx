@@ -210,9 +210,9 @@ export function HomeLinkWrapper({ children }) {
       }
       onClick={(e) => {
         e.preventDefault();
+        e.stopPropagation();
 
         if (path == "/") {
-          e.stopPropagation();
           setOpenMenu(false);
         } else {
           tRouter.push("/");
