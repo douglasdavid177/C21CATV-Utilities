@@ -49,7 +49,7 @@ export default function Home() {
           page.
         </p>
       </div> */}
-      <div className="justify-self-end">
+      <div className="justify-self-end ml-auto">
         <MenuOpenButton delayAmt={0.6} />
       </div>
     </div>
