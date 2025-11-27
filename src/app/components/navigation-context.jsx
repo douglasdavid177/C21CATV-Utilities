@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import HeaderBar from "./header-nav-bar";
 //import { useRouter } from "next/router";
@@ -11,12 +11,17 @@ export default function NavContext({ children }) {
 
   const pathname = usePathname();
   const router = useTransitionRouter();
+  const scrollContainer = useRef(null);
 
   useEffect(() => {
+    const cur = scrollContainer.current;
+    if (!cur) return;
     if (openMenu) {
-      document.body.style.overflowY = "hidden";
+      // document.body.style.overflowY = "hidden";
+      cur.overflowY = "hidden";
     } else {
-      document.body.style.overflowY = "";
+      // document.body.style.overflowY = "";
+      cur.overflowY = "";
     }
   }, [openMenu]);
 
@@ -24,7 +29,9 @@ export default function NavContext({ children }) {
     // This code will run whenever the pathname changes
     //console.log("Route changed to:", pathname);
     setOpenMenu(false);
-    document.documentElement.scrollTo({ top: 0, behavior: "instant" });
+    // document.documentElement.scrollTo({ top: 0, behavior: "instant" });
+    const cur = scrollContainer.current;
+    cur.scrollTo({ top: 0, behavior: "instant" });
 
     // Perform actions based on the new route
   }, [pathname]); // Depend on pathname to trigger the effect on change
@@ -57,10 +64,15 @@ export default function NavContext({ children }) {
   //   // A loading or empty state for the "before" snapshot
   //   return <div></div>;
   // }
+  // useEffect(() => {
+  //   const cur = scrollContainer.current;
+  //   cur.scrollTo({ top: 0, behavior: "instant" });
+  // });
   return (
     <NavigationContext.Provider value={{ openMenu, setOpenMenu }}>
       <div
         className="fixed inset-0 overflow-y-auto h-full"
+        ref={scrollContainer}
         style={{ scrollbarGutter: "stable", scrollBehavior: "smooth" }}
       >
         {showContent && [children]}
