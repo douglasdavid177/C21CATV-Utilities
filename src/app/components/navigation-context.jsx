@@ -59,21 +59,13 @@ export default function NavContext({ children }) {
   // }
   return (
     <NavigationContext.Provider value={{ openMenu, setOpenMenu }}>
-      {/* <div
-        className="fixed inset-0 overflow-auto"
-        style={{ scrollbarGutter: "stable", scrollBehavior: "smooth" }}
-      > */}
-
-      {showContent && [children]}
       <div
-      // style={{ viewTransitionName: "navv" }}
-      // style={{ zIndex: 3 }}
+        className="fixed inset-0 overflow-y-auto h-full"
+        style={{ scrollbarGutter: "stable", scrollBehavior: "smooth" }}
       >
+        {showContent && [children]}
         <HeaderBar />
       </div>
-
-      {/* {children} */}
-      {/* </div> */}
     </NavigationContext.Provider>
   );
 }

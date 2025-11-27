@@ -16,7 +16,7 @@ export default function FloorScheduleCalendar({ setDoneLoading }) {
             className="styled-calendar-container"
             style={{ width: "100%", border: "none" }}
             data-cy="calendar-embed-iframe"
-            loading="eager"
+            // loading="eager"
             onLoad={() => setDoneLoading(true)}
           ></iframe>
           <script

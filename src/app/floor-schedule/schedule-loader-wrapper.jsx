@@ -58,7 +58,7 @@ export default function ScheduleWithLoaderWrapper() {
           scale: targScale,
           opacity: targOpacity,
         }}
-        transition={{ duration: 0.4, ease: [0.1, 0.1, 0, 1] }}
+        transition={{ duration: 0.4, ease: [0.1, 0.1, 0.1, 1] }}
       >
         <FloorScheduleCalendar setDoneLoading={setDoneLoading} />
         {/* 
