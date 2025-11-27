@@ -64,8 +64,8 @@ export default function NavContext({ children }) {
         style={{ scrollbarGutter: "stable", scrollBehavior: "smooth" }}
       >
         {showContent && [children]}
-        <HeaderBar />
       </div>
+      <HeaderBar />
     </NavigationContext.Provider>
   );
 }
