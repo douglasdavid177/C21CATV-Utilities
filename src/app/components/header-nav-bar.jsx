@@ -10,7 +10,11 @@ import { HomeLinkWrapper } from "./buttons";
 // import { PrimaryButton } from "./buttons";
 
 export default function HeaderBar() {
+  const [onClient, setOnClient] = useState(false);
   const { openMenu, setOpenMenu } = useContext(NavigationContext);
+  useEffect(() => {
+    setOnClient(true);
+  }, []);
   return (
     <div
       style={
@@ -20,15 +24,27 @@ export default function HeaderBar() {
       }
     >
       {/* <NavMenuBG /> */}
+      <NavMenuBG />
 
       <div
-        className="fixed top-0 w-full ml-auto mr-auto h-16 pt-4 backdrop-blur-sm"
-        style={{
-          background: "rgb(18 18 18/0.75)",
-          //backdropFilter: "blur(0.7rem)",
-          //viewTransitionName: "nav-header-bg",
-        }}
-      ></div>
+        style={
+          {
+            // viewTransitionName: "nav-header-bg",
+          }
+        }
+      >
+        <motion.div
+          animate={{
+            background: openMenu ? "#252526" : "rgb(18 18 18/0.75)",
+          }}
+          className="fixed top-0 w-full ml-auto mr-auto h-16 pt-4 backdrop-blur-sm"
+          style={{
+            // background: "rgb(18 18 18/0.75)",
+            // backdropFilter: "blur(0.7rem)",
+            viewTransitionName: "nav-header-bg-motion",
+          }}
+        ></motion.div>
+      </div>
 
       <div
         className="fixed top-0 w-full ml-auto mr-auto h-16 //pt-4 flex //flex-row-reverse items-center justify-between //bg-red-500 text-4xl"
@@ -91,8 +107,6 @@ export default function HeaderBar() {
         </div>
       </div>
       {/* <NavMenu openMenu={openMenu} setOpenMenu={setOpenMenu} /> */}
-
-      <NavMenuBG />
 
       <NavMenu openMenu={openMenu} />
     </div>
