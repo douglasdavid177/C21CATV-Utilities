@@ -1,6 +1,12 @@
 "use client";
+
 import Image from "next/image";
+import { useLayoutEffect, useState } from "react";
 export default function ResizableHeroImage() {
+  const [onClient, setOnClient] = useState(false);
+  useLayoutEffect(() => {
+    setOnClient(true);
+  }, []);
   return (
     <div className="self-end sm:max-w-[45vw]">
       <Image
@@ -8,10 +14,14 @@ export default function ResizableHeroImage() {
         width={600}
         height={600}
         alt="City Graphic"
-        style={{ objectFit: "contain", height: "auto", width: "100%" }}
+        style={
+          onClient
+            ? { objectFit: "contain", height: "auto", width: "100%" }
+            : ""
+        }
       />
     </div>
   );
 
-  function resize() {}
+  // function resize() {}
 }
