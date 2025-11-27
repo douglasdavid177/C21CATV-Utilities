@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
     <ViewTransitions>
       <html
         lang="en"
-        style={{ scrollbarGutter: "stable", scrollBehavior: "smooth" }}
+        // style={{ scrollbarGutter: "stable", scrollBehavior: "smooth" }}
       >
         <ScrollRestorationDisabler />
         <body

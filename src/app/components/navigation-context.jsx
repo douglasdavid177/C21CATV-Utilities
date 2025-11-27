@@ -7,7 +7,7 @@ import { useTransitionRouter } from "next-view-transitions";
 export const NavigationContext = createContext(null);
 export default function NavContext({ children }) {
   const [openMenu, setOpenMenu] = useState(false);
-  const [showContent, setShowContent] = useState(false);
+  const [showContent, setShowContent] = useState(true);
 
   const pathname = usePathname();
   const router = useTransitionRouter();
@@ -36,22 +36,22 @@ export default function NavContext({ children }) {
   //   // Perform actions based on the new route
   // }, [router]); // Depend on pathname to trigger the effect on change
 
-  useEffect(() => {
-    // Check for browser support
-    if (!document.startViewTransition) {
-      //const timer = setTimeout(setShowContent(true), 0); // For some reason this prevents hydration issues
-      setShowContent(true);
-      //console.log("showing");
+  // useEffect(() => {
+  //   // Check for browser support
+  //   if (!document.startViewTransition) {
+  //     //const timer = setTimeout(setShowContent(true), 0); // For some reason this prevents hydration issues
+  //     setShowContent(true);
+  //     //console.log("showing");
 
-      return;
-    }
+  //     return;
+  //   }
 
-    // Trigger the view transition
-    document.startViewTransition(() => {
-      setShowContent(true);
-      //console.log("showing");
-    });
-  }, []);
+  //   // Trigger the view transition
+  //   document.startViewTransition(() => {
+  //     setShowContent(true);
+  //     //console.log("showing");
+  //   });
+  // }, []);
 
   // if (!showContent) {
   //   // A loading or empty state for the "before" snapshot
