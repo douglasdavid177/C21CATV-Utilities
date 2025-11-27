@@ -11,6 +11,7 @@ export default function ResizableHeroImage() {
     <div className="self-end sm:max-w-[45vw]">
       <Image
         src="/undraw-business-call-colored-gold.svg"
+        priority={true}
         width={600}
         height={600}
         alt="City Graphic"
