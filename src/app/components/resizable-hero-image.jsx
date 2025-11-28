@@ -21,7 +21,7 @@ export default function ResizableHeroImage({ herotextRef }) {
   }, []);
   useEffect(() => {
     checkIfMobile();
-  }, []);
+  });
 
   useEffect(() => {});
   return (
