@@ -9,7 +9,7 @@ export default function AnimatedParagraphs() {
         animate={{ translateY: 0, opacity: 1 }}
         transition={{
           duration: 0.7,
-          delay: 0.2,
+          delay: 0.3,
           ease: [0.1, 0.1, 0, 1],
         }}
       >
@@ -23,7 +23,7 @@ export default function AnimatedParagraphs() {
         animate={{ translateY: 0, opacity: 1 }}
         transition={{
           duration: 0.7,
-          delay: 0.3,
+          delay: 0.4,
           ease: [0.1, 0.1, 0, 1],
         }}
       >
@@ -37,7 +37,20 @@ export default function AnimatedParagraphs() {
         animate={{ translateY: 0, opacity: 1 }}
         transition={{
           duration: 0.7,
-          delay: 0.4,
+          delay: 0.5,
+          ease: [0.1, 0.1, 0, 1],
+        }}
+      >
+        All animations are written using the Motion (formally called Framer
+        Motion) api, and page transitions are implemented using the
+        next-view-transitions api in conjunction with global css animations.
+      </motion.p>
+      <motion.p
+        initial={{ translateY: 50, opacity: 0 }}
+        animate={{ translateY: 0, opacity: 1 }}
+        transition={{
+          duration: 0.7,
+          delay: 0.6,
           ease: [0.1, 0.1, 0, 1],
         }}
       >
@@ -52,7 +65,7 @@ export default function AnimatedParagraphs() {
         animate={{ translateY: 0, opacity: 1 }}
         transition={{
           duration: 0.7,
-          delay: 0.5,
+          delay: 0.7,
           ease: [0.1, 0.1, 0, 1],
         }}
       >
@@ -74,7 +87,7 @@ export function AnimatedHeading() {
         animate={{ translateY: 0, opacity: 1 }}
         transition={{
           duration: 0.7,
-          delay: 0.1,
+          delay: 0.2,
           ease: [0.1, 0.1, 0, 1],
         }}
       >
