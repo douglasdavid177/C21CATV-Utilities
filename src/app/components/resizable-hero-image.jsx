@@ -1,11 +1,21 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
-export default function ResizableHeroImage({ herotextRef }) {
+import {
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
+import { NavigationContext } from "./navigation-context";
+
+export default function ResizableHeroImage() {
   const backGroundRef = useRef(null);
   const personRef = useRef(null);
   const [bgImgHeight, setBgImgHeight] = useState("auto");
+  const { scrollToTopInstant } = useContext(NavigationContext);
+
   const [onClient, setOnClient] = useState(false);
   useLayoutEffect(() => {
     setOnClient(true);
@@ -69,6 +79,7 @@ export default function ResizableHeroImage({ herotextRef }) {
   }
 
   function setHeight() {
+    scrollToTopInstant();
     if (typeof window == undefined || !backGroundRef.current) return;
     const isMobile = window.innerWidth <= 640;
     const bgRect = backGroundRef.current.getBoundingClientRect();

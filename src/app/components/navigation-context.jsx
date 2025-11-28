@@ -28,8 +28,7 @@ export default function NavContext({ children }) {
   useEffect(() => {
     // This code will run whenever the pathname changes
     //console.log("Route changed to:", pathname);
-    const cur = scrollContainer.current;
-    cur.scrollTo({ top: 0, behavior: "instant" });
+    scrollToTopInstant();
     setOpenMenu(false);
     // document.documentElement.scrollTo({ top: 0, behavior: "instant" });
 
@@ -69,7 +68,9 @@ export default function NavContext({ children }) {
   //   cur.scrollTo({ top: 0, behavior: "instant" });
   // });
   return (
-    <NavigationContext.Provider value={{ openMenu, setOpenMenu }}>
+    <NavigationContext.Provider
+      value={{ openMenu, setOpenMenu, scrollToTopInstant }}
+    >
       <div
         className="fixed inset-0 overflow-y-auto h-full"
         ref={scrollContainer}
@@ -80,4 +81,11 @@ export default function NavContext({ children }) {
       <HeaderBar />
     </NavigationContext.Provider>
   );
+
+  function scrollToTopInstant() {
+    console.log("scrolled to top");
+    const container = scrollContainer.current;
+    if (!container) return;
+    container.scrollTo({ top: 0, behavior: "instant" });
+  }
 }
