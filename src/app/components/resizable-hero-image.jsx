@@ -19,8 +19,8 @@ export default function ResizableHeroImage({ herotextRef }) {
       screen.orientation.removeEventListener("change", checkIfMobile);
     };
   }, []);
-  useLayoutEffect(() => {
-    //checkIfMobile();
+  useEffect(() => {
+    checkIfMobile();
   });
 
   useEffect(() => {});
