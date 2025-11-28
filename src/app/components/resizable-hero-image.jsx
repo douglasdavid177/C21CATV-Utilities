@@ -21,7 +21,7 @@ export default function ResizableHeroImage({ herotextRef }) {
   }, []);
   useEffect(() => {
     checkIfMobile();
-  });
+  }, []);
 
   useEffect(() => {});
   return (
@@ -82,8 +82,9 @@ export default function ResizableHeroImage({ herotextRef }) {
     console.log("margin: " + computedMarginTop);
     if (isMobile) {
       const canvasHeight =
-        window.innerHeight - (bgRect.top - computedMarginTop);
+        window.innerHeight - (bgRect.top - computedMarginTop - window.scrollY);
       console.log("canvas h: " + canvasHeight);
+      console.log("scroll y: " + window.scrollY);
 
       if (canvasHeight < newHeight) {
         setBgImgHeight(canvasHeight);

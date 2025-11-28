@@ -28,10 +28,10 @@ export default function NavContext({ children }) {
   useEffect(() => {
     // This code will run whenever the pathname changes
     //console.log("Route changed to:", pathname);
-    setOpenMenu(false);
-    // document.documentElement.scrollTo({ top: 0, behavior: "instant" });
     const cur = scrollContainer.current;
     cur.scrollTo({ top: 0, behavior: "instant" });
+    setOpenMenu(false);
+    // document.documentElement.scrollTo({ top: 0, behavior: "instant" });
 
     // Perform actions based on the new route
   }, [pathname]); // Depend on pathname to trigger the effect on change
