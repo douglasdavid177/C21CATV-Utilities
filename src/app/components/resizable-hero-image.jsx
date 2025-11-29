@@ -31,7 +31,7 @@ export default function ResizableHeroImage() {
   }, []);
   useEffect(() => {
     checkIfMobile();
-  });
+  }, []);
 
   useEffect(() => {});
   return (
@@ -57,16 +57,14 @@ export default function ResizableHeroImage() {
       />
       <Image
         ref={personRef}
-        className="absolute inset-0 left-[42.5%]"
+        className="absolute inset-0 left-[47%] mt-auto"
         src="/undraw-business-call-gold-person-only.svg"
         priority={true}
         width={600}
         height={600}
         alt="City Graphic"
         style={
-          onClient
-            ? { objectFit: "contain", height: "100%", width: "auto" }
-            : ""
+          onClient ? { objectFit: "contain", height: "80%", width: "auto" } : ""
         }
       />
     </div>

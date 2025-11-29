@@ -28,7 +28,7 @@ export default function AnimatedParagraphs() {
         }}
       >
         With regards to development, I built this web app myself from scratch.
-        It was written completely in JavaScript, using the NextJS app router
+        It was written entirely in JavaScript, using the NextJS app router
         framework and ReactJS architecture on the front end to modularize the
         components.
       </motion.p>
@@ -41,9 +41,9 @@ export default function AnimatedParagraphs() {
           ease: [0.1, 0.1, 0, 1],
         }}
       >
-        All animations are written using the Motion (formally called Framer
-        Motion) api, and page transitions are implemented using the
-        next-view-transitions api in conjunction with global css animations.
+        All animations were written using the Motion (formally called Framer
+        Motion) api, and page transitions were implemented using the
+        next-view-transitions api in conjunction with global CSS animations.
       </motion.p>
       <motion.p
         initial={{ translateY: 50, opacity: 0 }}

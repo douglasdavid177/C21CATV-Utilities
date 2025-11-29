@@ -9,7 +9,7 @@ export default function FloorScheduleCalendar({ setDoneLoading }) {
     <div>
       {/* <div className="h-20"></div> */}
       {onClient && (
-        <div className="grow pl-4 pr-4 pb-4">
+        <div className="//grow pl-4 pr-4 pb-4">
           <iframe
             src="https://embed.styledcalendar.com/#5yuNF3LX1f4W61kZRXMZ"
             title="Styled Calendar"
