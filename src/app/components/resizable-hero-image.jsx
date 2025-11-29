@@ -29,7 +29,7 @@ export default function ResizableHeroImage() {
       screen.orientation.removeEventListener("change", checkIfMobile);
     };
   }, []);
-  useEffect(() => {
+  useLayoutEffect(() => {
     checkIfMobile();
   }, []);
 
