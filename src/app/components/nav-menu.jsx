@@ -8,6 +8,7 @@ import { NavigationContext } from "./navigation-context";
 
 import {
   AiFillCalendar,
+  AiFillContacts,
   AiFillHome,
   AiFillQuestionCircle,
 } from "react-icons/ai";
@@ -16,20 +17,28 @@ import { useContext, useEffect, useRef, useState } from "react";
 // import { NavMenuLink } from "./buttons";
 
 export default function NavMenu(props) {
-  const [onClient, setOnClient] = useState(false);
+  // const [onClient, setOnClient] = useState(false);
   const { openMenu } = useContext(NavigationContext);
 
+  const [showWarning, setShowWarning] = useState(false);
+
+  useEffect(() => {
+    if (showWarning == true) {
+      setShowWarning(false); //This activates warning animation
+    }
+  }, [showWarning]);
   // const [actuallyOpenMenu, setActuallyOpenMenu] = useState(openMenu);
 
   const scrollContainer = useRef(null);
   useEffect(() => {
-    setOnClient(true);
+    // setOnClient(true);
     // setActuallyOpenMenu(openMenu);
 
     if (!scrollContainer.current) {
       return;
     }
     if (openMenu) {
+      // activateWarning();
       const cur = scrollContainer.current;
       cur.scrollTo({ top: 0, behavior: "instant" });
     }
@@ -47,7 +56,7 @@ export default function NavMenu(props) {
       {/* <AnimatePresence> */}
       {/* {actuallyOpenMenu && ( */}
 
-      {onClient && (
+      {true && (
         <motion.div
           inert={!openMenu}
           key={"panel"}
@@ -98,8 +107,13 @@ export default function NavMenu(props) {
           >
             Menu
             <hr />
-            <div className="flex flex-col items-start mt-8 mb-8 gap-0">
+            <div className="flex flex-col items-start mt-8 mb-0 pb-16 gap-0 relative grow">
               <NavMenuLink text={"Home"} icon={<AiFillHome />} url={"/"} />
+              <NavMenuLink
+                text={"About"}
+                icon={<AiFillQuestionCircle />}
+                url={"/about-page"}
+              />
 
               <NavMenuLink
                 text={"Floor Schedule"}
@@ -107,12 +121,53 @@ export default function NavMenu(props) {
                 url={"/floor-schedule"}
               />
               <NavMenuLink
-                text={"About"}
-                icon={<AiFillQuestionCircle />}
-                url={"/about-page"}
+                url={"/"}
+                text={"Vendor List"}
+                icon={<AiFillContacts />}
+                disabled={true}
+                warningTrigger={activateWarning}
               />
+
+              <AnimatePresence>
+                {showWarning && (
+                  <div className="absolute bottom-0 right-0 left-0 flex justify-center">
+                    <motion.div
+                      className="p-3 text-sm rounded-full bg-red-c21 w-max "
+                      initial={{ y: -12.5, opacity: 0 }}
+                      animate={{
+                        y: -12.5,
+                        opacity: 0,
+                        transition: {
+                          duration: 0,
+                          delay: 0,
+                        },
+                      }}
+                      exit={{
+                        y: -38,
+                        opacity: [
+                          0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                          1, 1, 1, 1, 1, 1, 0.5, 0,
+                        ],
+                        // transition: { duration: 1.25, ease: "easeInOut" },
+                        transition: {
+                          duration: 1.65,
+                          ease: "easeInOut",
+                          // opacity: { duration: 0.35, delay: 1.15 },
+                        },
+                      }}
+                      // transition={{
+                      //   duration: 1.25,
+                      //   ease: "easeInOut",
+                      //   opacity: { duration: 0.25, delay: 1 },
+                      // }}
+                    >
+                      Coming soon!
+                    </motion.div>
+                  </div>
+                )}
+              </AnimatePresence>
             </div>
-            <div className="//h-full mt-auto grid grid-cols-[1fr_max-content] grid-rows-[max-content_max-content_max-content_max-content] gap-3 items-center justify-end overflow-x-visible mb-4">
+            <div className="//h-full //mt-auto grid grid-cols-[1fr_max-content] grid-rows-[max-content_max-content_max-content_max-content] gap-3 items-center justify-end overflow-x-visible mb-4">
               <div className="row-start-1 col-span-2 mb-8">
                 Contact Office
                 <hr className="" />
@@ -123,7 +178,10 @@ export default function NavMenu(props) {
               <Link
                 className="text-main-gold col-start-2 row-start-2"
                 href={
-                  "https://www.google.com/maps/place/Century+21+Coastal+Alliance/@27.6904439,-82.7230879,17z/data=!3m1!4b1!4m6!3m5!1s0x88c31db2a5e63301:0x735a49c72ee75b8e!8m2!3d27.6904392!4d-82.720513!16s%2Fg%2F11vsbr0ysm!5m1!1e4?entry=ttu&g_ep=EgoyMDI1MTExNy4wIKXMDSoASAFQAw%3D%3D"
+                  //"https://www.google.com/maps/place/Century+21+Coastal+Alliance/@27.6904439,-82.7230879,17z/data=!3m1!4b1!4m6!3m5!1s0x88c31db2a5e63301:0x735a49c72ee75b8e!8m2!3d27.6904392!4d-82.720513!16s%2Fg%2F11vsbr0ysm!5m1!1e4?entry=ttu&g_ep=EgoyMDI1MTExNy4wIKXMDSoASAFQAw%3D%3D"
+                  // "https://maps.app.goo.gl/CPgsfpEAP4CCRr6d8"
+                  // "https://maps.app.goo.gl/vgyFq6swTRiCDeBc6"
+                  "https://maps.app.goo.gl/QgRcLbCPFMt9uVeP8"
                 }
                 target="_blank"
               >
@@ -158,6 +216,10 @@ export default function NavMenu(props) {
       {/* </AnimatePresence> */}
     </div>
   );
+  function activateWarning() {
+    //set showWarning to true
+    setShowWarning(true);
+  }
 }
 export function NavMenuBG() {
   const { openMenu, setOpenMenu } = useContext(NavigationContext);

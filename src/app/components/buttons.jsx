@@ -124,7 +124,13 @@ export default function SpanLinkBasic({ text, url }) {
   );
 }
 
-export function NavMenuLink({ text, icon, url }) {
+export function NavMenuLink({
+  text,
+  icon,
+  url,
+  disabled = false,
+  warningTrigger,
+}) {
   const path = usePathname();
   const tRouter = useTransitionRouter();
   const { setOpenMenu } = useContext(NavigationContext);
@@ -146,21 +152,38 @@ export function NavMenuLink({ text, icon, url }) {
       className="text-xl font-bold flex items-center gap-4 w-full h-16"
       onClick={(e) => {
         e.preventDefault();
+        e.stopPropagation();
+
+        if (disabled) {
+          warningTrigger();
+          return;
+        }
 
         if (path == url) {
           console.log("nope");
 
-          e.stopPropagation();
           setOpenMenu(false);
         } else {
           tRouter.push(url);
         }
       }}
+      style={{ cursor: onClient && disabled ? "default" : "" }}
     >
-      {icon}
+      {icon ? (
+        <div style={{ color: disabled ? "var(--color-medium-grey)" : "" }}>
+          {icon}
+        </div>
+      ) : (
+        <div className="bg-medium-grey h-4 w-4 rounded-full"></div>
+      )}
       <motion.span
         style={{
-          color: onClient && url == path ? "var(--color-main-gold)" : "",
+          color: disabled
+            ? "var(--color-medium-grey)"
+            : url == path
+            ? "var(--color-main-gold)"
+            : "",
+          // background: disabled ? "red" : "",
         }}
         // animate={{
         //   scale: beingHovered && url != path ? 1.075 : 1,
@@ -169,7 +192,7 @@ export function NavMenuLink({ text, icon, url }) {
       >
         {text}
       </motion.span>
-      {url != path && (
+      {url != path && !disabled && (
         <motion.span
           className="text-main-gold"
           initial={{ opacity: 0 }}
@@ -185,7 +208,7 @@ export function NavMenuLink({ text, icon, url }) {
           <AiOutlineArrowRight />
         </motion.span>
       )}
-      {url == path && (
+      {url == path && !disabled && (
         <span className="text-main-gold">
           {/* <AiFillLeftCircle /> */}
           <div className=" rounded-full bg-main-gold w-2 h-2"></div>
