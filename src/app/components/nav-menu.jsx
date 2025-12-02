@@ -131,38 +131,40 @@ export default function NavMenu(props) {
               <AnimatePresence>
                 {showWarning && (
                   <div className="absolute bottom-0 right-0 left-0 flex justify-center">
-                    <motion.div
-                      className="p-3 text-sm rounded-full bg-red-c21 w-max "
-                      initial={{ y: -12.5, opacity: 0 }}
-                      animate={{
-                        y: -12.5,
-                        opacity: 0,
-                        transition: {
-                          duration: 0,
-                          delay: 0,
-                        },
-                      }}
-                      exit={{
-                        y: -38,
-                        opacity: [
-                          0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-                          1, 1, 1, 1, 1, 1, 0.5, 0,
-                        ],
-                        // transition: { duration: 1.25, ease: "easeInOut" },
-                        transition: {
-                          duration: 1.65,
-                          ease: "easeInOut",
-                          // opacity: { duration: 0.35, delay: 1.15 },
-                        },
-                      }}
-                      // transition={{
-                      //   duration: 1.25,
-                      //   ease: "easeInOut",
-                      //   opacity: { duration: 0.25, delay: 1 },
-                      // }}
-                    >
-                      Coming soon!
-                    </motion.div>
+                    <div className="sticky bottom-[1vh]">
+                      <motion.div
+                        className="p-3 text-sm rounded-full bg-red-c21 w-max sticky bottom-[1vh] "
+                        initial={{ y: -12.5, opacity: 0 }}
+                        animate={{
+                          y: -12.5,
+                          opacity: 0,
+                          transition: {
+                            duration: 0,
+                            delay: 0,
+                          },
+                        }}
+                        exit={{
+                          y: -38,
+                          opacity: [
+                            0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                            1, 1, 1, 1, 1, 1, 1, 0.5, 0,
+                          ],
+                          // transition: { duration: 1.25, ease: "easeInOut" },
+                          transition: {
+                            duration: 1.65,
+                            ease: "easeInOut",
+                            // opacity: { duration: 0.35, delay: 1.15 },
+                          },
+                        }}
+                        // transition={{
+                        //   duration: 1.25,
+                        //   ease: "easeInOut",
+                        //   opacity: { duration: 0.25, delay: 1 },
+                        // }}
+                      >
+                        Coming soon!
+                      </motion.div>
+                    </div>
                   </div>
                 )}
               </AnimatePresence>

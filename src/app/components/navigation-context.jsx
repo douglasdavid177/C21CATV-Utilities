@@ -1,5 +1,11 @@
 "use client";
-import { createContext, useState, useEffect, useRef } from "react";
+import {
+  createContext,
+  useState,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+} from "react";
 import { usePathname } from "next/navigation";
 import HeaderBar from "./header-nav-bar";
 //import { useRouter } from "next/router";
@@ -13,7 +19,7 @@ export default function NavContext({ children }) {
   const router = useTransitionRouter();
   const scrollContainer = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const cur = scrollContainer.current;
     if (!cur) return;
     if (openMenu) {
@@ -25,7 +31,7 @@ export default function NavContext({ children }) {
     }
   }, [openMenu]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     // This code will run whenever the pathname changes
     //console.log("Route changed to:", pathname);
     scrollToTopInstant();
@@ -42,7 +48,7 @@ export default function NavContext({ children }) {
   //   // Perform actions based on the new route
   // }, [router]); // Depend on pathname to trigger the effect on change
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     // Check for browser support
     if (!document.startViewTransition) {
       //const timer = setTimeout(setShowContent(true), 0); // For some reason this prevents hydration issues
