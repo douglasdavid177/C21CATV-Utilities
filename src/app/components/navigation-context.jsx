@@ -34,7 +34,13 @@ export default function NavContext({ children }) {
   useLayoutEffect(() => {
     // This code will run whenever the pathname changes
     //console.log("Route changed to:", pathname);
+
     scrollToTopInstant();
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant",
+    });
     setOpenMenu(false);
     // document.documentElement.scrollTo({ top: 0, behavior: "instant" });
 
@@ -91,7 +97,10 @@ export default function NavContext({ children }) {
   function scrollToTopInstant() {
     console.log("scrolled to top");
     const container = scrollContainer.current;
-    if (!container) return;
+    if (!container) {
+      console.log("problem scrolling content to top");
+      return;
+    }
     container.scrollTo({ top: 0, behavior: "instant" });
   }
 }

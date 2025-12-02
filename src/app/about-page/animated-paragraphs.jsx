@@ -41,8 +41,8 @@ export default function AnimatedParagraphs() {
           ease: [0.1, 0.1, 0, 1],
         }}
       >
-        All animations were written using the Motion (formally called Framer
-        Motion) api, and page transitions were implemented using the
+        Styles were written with Tailwind, all animations were written using the
+        Motion api, and page transitions were implemented using the
         next-view-transitions api in conjunction with global CSS animations.
       </motion.p>
       <motion.p
