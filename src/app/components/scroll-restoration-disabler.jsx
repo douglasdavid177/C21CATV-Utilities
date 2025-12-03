@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect } from "react";
+import { useLayoutEffect, useEffect } from "react";
 
 export default function ScrollRestorationDisabler() {
   useLayoutEffect(() => {
@@ -11,7 +11,7 @@ export default function ScrollRestorationDisabler() {
       // Optionally, reset to 'auto' when the component unmounts if needed elsewhere
       //history.scrollRestoration = 'auto';
     };
-  });
+  }, []);
 
   return null; // This component doesn't render anything
 }

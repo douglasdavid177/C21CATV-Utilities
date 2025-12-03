@@ -107,7 +107,7 @@ export default function NavMenu(props) {
           >
             Menu
             <hr />
-            <div className="flex flex-col items-start mt-8 mb-0 pb-16 gap-0 relative grow">
+            <div className="flex flex-col items-start mt-8 mb-0 //pb-16 gap-0 relative grow">
               <NavMenuLink text={"Home"} icon={<AiFillHome />} url={"/"} />
               <NavMenuLink
                 text={"About"}
@@ -128,46 +128,44 @@ export default function NavMenu(props) {
                 warningTrigger={activateWarning}
               />
 
-              <AnimatePresence>
-                {showWarning && (
-                  <div className="absolute bottom-0 right-0 left-0 flex justify-center">
-                    <div className="sticky bottom-[1vh]">
-                      <motion.div
-                        className="p-3 text-sm rounded-full bg-red-c21 w-max sticky bottom-[1vh] "
-                        initial={{ y: -12.5, opacity: 0 }}
-                        animate={{
-                          y: -12.5,
-                          opacity: 0,
-                          transition: {
-                            duration: 0,
-                            delay: 0,
-                          },
-                        }}
-                        exit={{
-                          y: -38,
-                          opacity: [
-                            0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-                            1, 1, 1, 1, 1, 1, 1, 0.5, 0,
-                          ],
-                          // transition: { duration: 1.25, ease: "easeInOut" },
-                          transition: {
-                            duration: 1.65,
-                            ease: "easeInOut",
-                            // opacity: { duration: 0.35, delay: 1.15 },
-                          },
-                        }}
-                        // transition={{
-                        //   duration: 1.25,
-                        //   ease: "easeInOut",
-                        //   opacity: { duration: 0.25, delay: 1 },
-                        // }}
-                      >
-                        Coming soon!
-                      </motion.div>
-                    </div>
-                  </div>
-                )}
-              </AnimatePresence>
+              <div className="mt-auto h-12 mb-4 w-full right-0 left-0 flex justify-center items-end sticky bottom-[1vh] pointer-events-none">
+                <AnimatePresence>
+                  {showWarning && (
+                    <motion.div
+                      className="p-3 text-sm h-min rounded-full bg-red-c21 w-max "
+                      initial={{ y: 0, opacity: 0 }}
+                      animate={{
+                        y: 0,
+                        opacity: 0,
+                        transition: {
+                          duration: 0,
+                          delay: 0,
+                        },
+                      }}
+                      exit={{
+                        y: -12,
+                        opacity: [
+                          0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                          1, 1, 1, 1, 1, 1, 0.5, 0,
+                        ],
+                        // transition: { duration: 1.25, ease: "easeInOut" },
+                        transition: {
+                          duration: 1.65,
+                          ease: "easeInOut",
+                          // opacity: { duration: 0.35, delay: 1.15 },
+                        },
+                      }}
+                      // transition={{
+                      //   duration: 1.25,
+                      //   ease: "easeInOut",
+                      //   opacity: { duration: 0.25, delay: 1 },
+                      // }}
+                    >
+                      Coming soon!
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </div>
             <div className="//h-full //mt-auto grid grid-cols-[1fr_max-content] grid-rows-[max-content_max-content_max-content_max-content] gap-3 items-center justify-end overflow-x-visible mb-4">
               <div className="row-start-1 col-span-2 mb-8">
