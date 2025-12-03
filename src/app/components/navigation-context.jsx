@@ -24,18 +24,20 @@ export default function NavContext({ children }) {
     if (!cur) return;
     if (openMenu) {
       // document.body.style.overflowY = "hidden";
-      cur.overflowY = "hidden";
+      pauseScroll();
     } else {
       // document.body.style.overflowY = "";
-      cur.overflowY = "";
+      resumeScroll();
     }
   }, [openMenu]);
 
   useLayoutEffect(() => {
     // This code will run whenever the pathname changes
     //console.log("Route changed to:", pathname);
+    pauseScroll();
 
     scrollToTopInstant();
+    resumeScroll();
     // window.scrollTo({
     //   top: 0,
     //   left: 0,
@@ -102,5 +104,15 @@ export default function NavContext({ children }) {
       return;
     }
     container.scrollTo({ top: 0, behavior: "instant" });
+  }
+  function pauseScroll() {
+    const cur = scrollContainer.current;
+    if (!cur) return;
+    cur.overflowY = "hidden";
+  }
+  function resumeScroll() {
+    const cur = scrollContainer.current;
+    if (!cur) return;
+    cur.overflowY = "";
   }
 }
