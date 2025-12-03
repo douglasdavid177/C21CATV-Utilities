@@ -107,8 +107,10 @@ export default function NavContext({ children }) {
   }
   function pauseScroll() {
     const cur = scrollContainer.current;
+
     if (!cur) return;
     cur.overflowY = "hidden";
+    cur.scrollTo({ top: cur.scrollTop, behavior: "instant" });
   }
   function resumeScroll() {
     const cur = scrollContainer.current;
