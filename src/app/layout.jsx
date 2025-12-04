@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
         lang="en"
         // style={{ scrollbarGutter: "stable", scrollBehavior: "smooth" }}
       >
-        {/* <ScrollRestorationDisabler />  */}
+        <ScrollRestorationDisabler />
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased `}
         >
