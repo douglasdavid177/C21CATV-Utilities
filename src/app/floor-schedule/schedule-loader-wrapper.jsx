@@ -8,8 +8,24 @@ import { AnimatePresence, motion } from "motion/react";
 export default function ScheduleWithLoaderWrapper() {
   //const iframeRef = useRef(null);
   const [doneLoading, setDoneLoading] = useState(false);
+  const [displayingCalendar, setDisplayingCalendar] = useState(false);
   const [targScale, setTargScale] = useState(0.9);
   const [targOpacity, setTarOpacity] = useState(0);
+  const [portrait, setPortrait] = useState(false);
+  useEffect(() => {
+    window.addEventListener("resize", checkPortrait);
+    screen.orientation.addEventListener("change", checkPortrait);
+    checkPortrait();
+    return () => {
+      window.removeEventListener("resize", checkPortrait);
+      screen.orientation.removeEventListener("change", checkPortrait);
+    };
+  });
+  function checkPortrait() {
+    let result = false;
+    if (window.innerWidth < 608) result = true;
+    setPortrait(result);
+  }
   // const [onClient, setOnClient] = useState(false);
   // useEffect(() => {
   //   setOnClient(true);
@@ -33,6 +49,7 @@ export default function ScheduleWithLoaderWrapper() {
         onExitComplete={() => {
           setTarOpacity(1);
           setTargScale(1);
+          setDisplayingCalendar(true);
         }}
       >
         {!doneLoading && (
@@ -48,6 +65,32 @@ export default function ScheduleWithLoaderWrapper() {
           </motion.div>
         )}
       </AnimatePresence>
+      {displayingCalendar && portrait && (
+        <div className="pl-4 pr-4 flex justify-center text-center xsc:hidden">
+          <motion.p
+            key={portrait}
+            initial={{ opacity: 0, color: "var(--color-medium-grey)" }}
+            animate={{
+              opacity: 1,
+              color: [
+                "var(--color-medium-grey)",
+                "var(--color-main-gold)",
+                "var(--color-medium-grey)",
+                "var(--color-medium-grey)",
+                "var(--color-main-gold)",
+                "var(--color-medium-grey)",
+              ],
+            }}
+            transition={{
+              opacity: { duration: 0.35, delay: 0 },
+              duration: 4,
+              delay: 1,
+            }}
+          >
+            Rotate your device to landscape mode to view traditional month view
+          </motion.p>
+        </div>
+      )}
 
       <motion.div
         initial={{
@@ -90,6 +133,5 @@ export default function ScheduleWithLoaderWrapper() {
           {doneLoading ? <FloorScheduleCalendar /> : <LoadingIndicator />}
         </motion.div> */}
     </div>
-    //  </div>
   );
 }

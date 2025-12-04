@@ -20,7 +20,6 @@ export default function ResizableHeroImage() {
   useLayoutEffect(() => {
     setOnClient(true);
     window.addEventListener("resize", checkIfMobile);
-    // window.addEventListener("orientationChange", checkIfMobile);
     screen.orientation.addEventListener("change", checkIfMobile);
     checkIfMobile();
 
