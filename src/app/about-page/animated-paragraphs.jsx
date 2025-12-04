@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 import SpanLinkBasic from "../components/buttons";
 export default function AnimatedParagraphs() {
   return (
-    <div className="flex flex-col items-center gap-4">
+    <div className="flex flex-col items-start gap-4">
       <motion.p
         initial={{ translateY: 40, opacity: 0 }}
         animate={{ translateY: 0, opacity: 1 }}
@@ -73,6 +73,25 @@ export default function AnimatedParagraphs() {
         utilizes a JavaScript api to read the spreadsheet in real time like a
         database and display its contents. It’s always up to date and refreshes
         when you refresh the page.
+      </motion.p>
+      <motion.p
+        initial={{ translateY: 50, opacity: 0 }}
+        animate={{ translateY: 0, opacity: 1 }}
+        transition={{
+          duration: 0.8,
+          delay: 0.7,
+          ease: [0.1, 0.1, 0, 1],
+        }}
+      >
+        The{" "}
+        <a
+          href={"https://github.com/douglasdavid177/C21CATV-Utilities"}
+          target={"_blank"}
+          className="text-main-gold"
+        >
+          source code
+        </a>{" "}
+        for this project can be viewed online on GitHub.
       </motion.p>
     </div>
   );
