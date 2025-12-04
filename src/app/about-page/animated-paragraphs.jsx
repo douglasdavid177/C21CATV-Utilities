@@ -9,7 +9,7 @@ export default function AnimatedParagraphs() {
         animate={{ translateY: 0, opacity: 1 }}
         transition={{
           duration: 0.7,
-          delay: 0.3,
+          delay: 0.4,
           ease: [0.1, 0.1, 0, 1],
         }}
       >
@@ -23,7 +23,7 @@ export default function AnimatedParagraphs() {
         animate={{ translateY: 0, opacity: 1 }}
         transition={{
           duration: 0.7,
-          delay: 0.4,
+          delay: 0.5,
           ease: [0.1, 0.1, 0, 1],
         }}
       >
@@ -37,7 +37,7 @@ export default function AnimatedParagraphs() {
         animate={{ translateY: 0, opacity: 1 }}
         transition={{
           duration: 0.7,
-          delay: 0.5,
+          delay: 0.6,
           ease: [0.1, 0.1, 0, 1],
         }}
       >
@@ -50,7 +50,7 @@ export default function AnimatedParagraphs() {
         animate={{ translateY: 0, opacity: 1 }}
         transition={{
           duration: 0.7,
-          delay: 0.6,
+          delay: 0.7,
           ease: [0.1, 0.1, 0, 1],
         }}
       >
@@ -65,7 +65,7 @@ export default function AnimatedParagraphs() {
         animate={{ translateY: 0, opacity: 1 }}
         transition={{
           duration: 0.7,
-          delay: 0.7,
+          delay: 0.8,
           ease: [0.1, 0.1, 0, 1],
         }}
       >
@@ -78,8 +78,8 @@ export default function AnimatedParagraphs() {
         initial={{ translateY: 50, opacity: 0 }}
         animate={{ translateY: 0, opacity: 1 }}
         transition={{
-          duration: 0.8,
-          delay: 0.7,
+          duration: 0.7,
+          delay: 0.9,
           ease: [0.1, 0.1, 0, 1],
         }}
       >
@@ -106,7 +106,7 @@ export function AnimatedHeading() {
         animate={{ translateY: 0, opacity: 1 }}
         transition={{
           duration: 0.7,
-          delay: 0.2,
+          delay: 0.3,
           ease: [0.1, 0.1, 0, 1],
         }}
       >
