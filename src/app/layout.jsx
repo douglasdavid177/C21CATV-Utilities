@@ -3,7 +3,7 @@ import "./globals.css";
 import HeaderBar from "./components/header-nav-bar";
 import NavContext from "./components/navigation-context";
 import { ViewTransitions } from "next-view-transitions";
-// import ScrollRestorationDisabler from "./components/scroll-restoration-disabler";
+import ScrollRestorationDisabler from "./components/scroll-restoration-disabler";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
