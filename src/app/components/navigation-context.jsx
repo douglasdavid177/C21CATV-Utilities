@@ -34,11 +34,11 @@ export default function NavContext({ children }) {
   useLayoutEffect(() => {
     // This code will run whenever the pathname changes
     //console.log("Route changed to:", pathname);
-    setTimeout(() => {
-      pauseScroll();
-      resumeScroll();
-      scrollToTopInstant();
-    }, 10);
+    // setTimeout(() => {
+    pauseScroll();
+    resumeScroll();
+    scrollToTopInstant();
+    // }, 10);
 
     // window.scrollTo({
     //   top: 0,
@@ -52,11 +52,11 @@ export default function NavContext({ children }) {
   }, [pathname]); // Depend on pathname to trigger the effect on change
 
   useEffect(() => {
-    setTimeout(() => {
-      pauseScroll();
-      resumeScroll();
-      scrollToTopInstant();
-    }, 10);
+    // setTimeout(() => {
+    pauseScroll();
+    resumeScroll();
+    scrollToTopInstant();
+    // }, 10);
   }, [pathname]);
 
   // useEffect(() => {
