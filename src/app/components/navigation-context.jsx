@@ -49,6 +49,13 @@ export default function NavContext({ children }) {
     // Perform actions based on the new route
   }, [pathname]); // Depend on pathname to trigger the effect on change
 
+  useEffect(() => {
+    pauseScroll();
+
+    scrollToTopInstant();
+    resumeScroll();
+  }, [pathname]);
+
   // useEffect(() => {
   //   // This code will run whenever the pathname changes
   //   console.log("Route changed to:", router.route);
