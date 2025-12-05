@@ -36,9 +36,8 @@ export default function NavContext({ children }) {
     //console.log("Route changed to:", pathname);
     setTimeout(() => {
       pauseScroll();
-
-      scrollToTopInstant();
       resumeScroll();
+      scrollToTopInstant();
     }, 10);
 
     // window.scrollTo({
@@ -55,9 +54,8 @@ export default function NavContext({ children }) {
   useEffect(() => {
     setTimeout(() => {
       pauseScroll();
-
-      scrollToTopInstant();
       resumeScroll();
+      scrollToTopInstant(true);
     }, 10);
   }, [pathname]);
 
@@ -108,14 +106,14 @@ export default function NavContext({ children }) {
     </NavigationContext.Provider>
   );
 
-  function scrollToTopInstant() {
+  function scrollToTopInstant(smooth = false) {
     console.log("scrolled to top");
     const container = scrollContainer.current;
     if (!container) {
       console.log("problem scrolling content to top");
       return;
     }
-    container.scrollTo({ top: 0, behavior: "instant" });
+    container.scrollTo({ top: 0, behavior: smooth ? "smooth" : "instant" });
   }
   function pauseScroll() {
     const cur = scrollContainer.current;
