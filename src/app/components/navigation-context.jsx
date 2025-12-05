@@ -110,7 +110,7 @@ export default function NavContext({ children }) {
       console.log("problem scrolling content to top");
       return;
     }
-    container.scrollTo({ top: 0, behavior: "smooth" });
+    container.scrollTo({ top: 0, behavior: "instant" });
   }
   function pauseScroll() {
     const cur = scrollContainer.current;
