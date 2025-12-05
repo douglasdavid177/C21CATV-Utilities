@@ -1,17 +1,23 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import FloorScheduleCalendar from "./floor-schedule-calendar";
 import LoadingIndicator from "./loading-indicator";
 import { AnimatePresence, motion } from "motion/react";
+import NavContext, {
+  NavigationContext,
+} from "../components/navigation-context";
+import { MenuOpenButton } from "../components/buttons";
 
 export default function ScheduleWithLoaderWrapper() {
   //const iframeRef = useRef(null);
   const [doneLoading, setDoneLoading] = useState(false);
   const [displayingCalendar, setDisplayingCalendar] = useState(false);
   const [targScale, setTargScale] = useState(0.9);
+  const [targY, setTargY] = useState(60);
   const [targOpacity, setTarOpacity] = useState(0);
   const [portrait, setPortrait] = useState(false);
+  const { scrollToTopInstant } = useContext(NavigationContext);
   useEffect(() => {
     window.addEventListener("resize", checkPortrait);
     screen.orientation.addEventListener("change", checkPortrait);
@@ -49,6 +55,8 @@ export default function ScheduleWithLoaderWrapper() {
         onExitComplete={() => {
           setTarOpacity(1);
           setTargScale(1);
+          setTargY(0);
+          scrollToTopInstant();
           setDisplayingCalendar(true);
         }}
       >
@@ -94,14 +102,16 @@ export default function ScheduleWithLoaderWrapper() {
 
       <motion.div
         initial={{
-          scale: 0.9,
+          // scale: 0.9,
+          y: 60,
           opacity: 0,
         }}
         animate={{
-          scale: targScale,
+          // scale: targScale,
+          y: targY,
           opacity: targOpacity,
         }}
-        transition={{ duration: 0.4, ease: [0.1, 0.1, 0.1, 1] }}
+        transition={{ duration: 0.5, delay: 0.1, ease: [0.1, 0.1, 0.1, 1] }}
       >
         <FloorScheduleCalendar setDoneLoading={setDoneLoading} />
         {/* 
@@ -132,6 +142,25 @@ export default function ScheduleWithLoaderWrapper() {
         >
           {doneLoading ? <FloorScheduleCalendar /> : <LoadingIndicator />}
         </motion.div> */}
+
+      {displayingCalendar && (
+        <div className="pt-16 pr-8 pl-8 flex flex-col max-w-[670px] ml-auto mr-auto">
+          <h1 className="text-2xl font-bold text-medium-grey mt-5 mb-5">
+            More Info
+          </h1>
+          <p>This calendar is for viewing purposes only.</p>
+          <p>
+            Please contact Rhonda directly for schedule requests, edits or
+            inquiries. Contact information for the front desk (Rhonda) is
+            available in the navigation menu.
+          </p>
+
+          <div className="ml-auto">
+            <MenuOpenButton />
+          </div>
+          <div className="h-16"></div>
+        </div>
+      )}
     </div>
   );
 }

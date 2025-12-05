@@ -149,7 +149,7 @@ export function NavMenuLink({
         setBeingHovered(false);
       }}
       href={url}
-      className="text-xl font-bold flex items-center gap-4 w-full h-16"
+      className="text-xl font-bold flex items-center gap-4 w-full min-h-16"
       onClick={(e) => {
         e.preventDefault();
         e.stopPropagation();

@@ -10,7 +10,10 @@ export default function Home() {
     setDoneLoading(true);
   }, []);
   return (
-    <div className="pt-16 pl-[7.5%] pr-[7.5%] sm:pl-[20%] sm:pr-[20%] xl:pl-[30%] xl:pr-[30%]">
+    <div
+      // className="pt-16 pl-[7.5%] pr-[7.5%] sm:pl-[20%] sm:pr-[20%] xl:pl-[30%] xl:pr-[30%]"
+      className="pt-16 pr-8 pl-8 flex flex-col max-w-[670px] ml-auto mr-auto"
+    >
       <div className="w-full flex justify-center items-center">
         <Image
           src="/undraw_code-inspection-gold-dark.svg"
@@ -50,7 +53,7 @@ export default function Home() {
         </p>
       </div> */}
       <div className="ml-auto mr-0 w-max">
-        <MenuOpenButton delayAmt={1} />
+        <MenuOpenButton delayAmt={1.05} />
       </div>
       <div className="h-16"></div>
     </div>
