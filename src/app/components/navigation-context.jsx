@@ -55,7 +55,7 @@ export default function NavContext({ children }) {
     setTimeout(() => {
       pauseScroll();
       resumeScroll();
-      scrollToTopInstant(true);
+      scrollToTopInstant();
     }, 10);
   }, [pathname]);
 
