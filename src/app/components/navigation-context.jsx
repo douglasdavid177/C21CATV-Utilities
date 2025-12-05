@@ -6,7 +6,6 @@ import {
   useLayoutEffect,
   useRef,
 } from "react";
-import { ViewTransitions } from "next-view-transitions";
 
 import { usePathname } from "next/navigation";
 import HeaderBar from "./header-nav-bar";
@@ -37,9 +36,9 @@ export default function NavContext({ children }) {
     // This code will run whenever the pathname changes
     //console.log("Route changed to:", pathname);
     // setTimeout(() => {
-    pauseScroll();
-    resumeScroll();
-    scrollToTopInstant();
+    // pauseScroll();
+    // resumeScroll();
+    // scrollToTopInstant();
     // }, 10);
 
     // window.scrollTo({
@@ -102,7 +101,8 @@ export default function NavContext({ children }) {
         ref={scrollContainer}
         style={{ scrollbarGutter: "stable", scrollBehavior: "smooth" }}
       >
-        <ViewTransitions>{showContent && [children]}</ViewTransitions>
+        {showContent && [children]}
+        {/* <ViewTransitions>{}</ViewTransitions> */}
       </div>
       <HeaderBar />
     </NavigationContext.Provider>

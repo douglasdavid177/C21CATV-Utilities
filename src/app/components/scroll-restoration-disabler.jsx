@@ -3,7 +3,7 @@
 import { useLayoutEffect, useEffect } from "react";
 
 export default function ScrollRestorationDisabler() {
-  useLayoutEffect(() => {
+  useEffect(() => {
     // Set scroll restoration to manual to prevent the browser/Next.js from managing scroll position automatically
     history.scrollRestoration = "manual";
 
