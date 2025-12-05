@@ -20,17 +20,17 @@ export default function NavContext({ children }) {
   const router = useTransitionRouter();
   const scrollContainer = useRef(null);
 
-  useLayoutEffect(() => {
-    const cur = scrollContainer.current;
-    if (!cur) return;
-    if (openMenu) {
-      // document.body.style.overflowY = "hidden";
-      pauseScroll();
-    } else {
-      // document.body.style.overflowY = "";
-      resumeScroll();
-    }
-  }, [openMenu]);
+  // useLayoutEffect(() => {
+  //   const cur = scrollContainer.current;
+  //   if (!cur) return;
+  //   if (openMenu) {
+  //     // document.body.style.overflowY = "hidden";
+  //     pauseScroll();
+  //   } else {
+  //     // document.body.style.overflowY = "";
+  //     resumeScroll();
+  //   }
+  // }, [openMenu]);
 
   useLayoutEffect(() => {
     // This code will run whenever the pathname changes
@@ -53,11 +53,11 @@ export default function NavContext({ children }) {
   }, [pathname]); // Depend on pathname to trigger the effect on change
 
   useEffect(() => {
-    // setTimeout(() => {
-    pauseScroll();
-    resumeScroll();
-    scrollToTopInstant();
-    // }, 10);
+    setTimeout(() => {
+      pauseScroll();
+      scrollToTopInstant();
+      resumeScroll();
+    }, 10);
   }, [pathname]);
 
   // useEffect(() => {
@@ -97,9 +97,9 @@ export default function NavContext({ children }) {
       value={{ openMenu, setOpenMenu, scrollToTopInstant }}
     >
       <div
-        className="fixed inset-0 overflow-y-auto h-full"
+        className="fixed inset-0 overflow-y-auto h-full scroll-smooth [scrollbar-gutter:stable]"
         ref={scrollContainer}
-        style={{ scrollbarGutter: "stable", scrollBehavior: "smooth" }}
+        // style={{ scrollbarGutter: "stable", scrollBehavior: "smooth" }}
       >
         {showContent && [children]}
         {/* <ViewTransitions>{}</ViewTransitions> */}
@@ -109,7 +109,7 @@ export default function NavContext({ children }) {
   );
 
   function scrollToTopInstant(smooth = false) {
-    console.log("scrolled to top");
+    // console.log("scrolled to top");
     const container = scrollContainer.current;
     if (!container) {
       console.log("problem scrolling content to top");
@@ -120,7 +120,10 @@ export default function NavContext({ children }) {
   function pauseScroll() {
     const cur = scrollContainer.current;
 
-    if (!cur) return;
+    if (!cur) {
+      console.log("no scroll container");
+      return;
+    }
     cur.overflowY = "hidden";
     cur.scrollTo({ top: cur.scrollTop, behavior: "instant" });
   }
