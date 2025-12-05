@@ -6,6 +6,8 @@ import {
   useLayoutEffect,
   useRef,
 } from "react";
+import { ViewTransitions } from "next-view-transitions";
+
 import { usePathname } from "next/navigation";
 import HeaderBar from "./header-nav-bar";
 //import { useRouter } from "next/router";
@@ -100,7 +102,7 @@ export default function NavContext({ children }) {
         ref={scrollContainer}
         style={{ scrollbarGutter: "stable", scrollBehavior: "smooth" }}
       >
-        {showContent && [children]}
+        <ViewTransitions>{showContent && [children]}</ViewTransitions>
       </div>
       <HeaderBar />
     </NavigationContext.Provider>
