@@ -135,7 +135,14 @@ export default function ScheduleWithLoaderWrapper() {
             ></script>
           </div>
         )} */}
-        <div className="xsc:h-0 sticky bottom-0 translate-y-0.5 left-0 right-0 h-16 bg-gradient-to-t from-black/80 to-transparent pointer-events-none"></div>
+        {displayingCalendar && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.35, delay: 0.1 }}
+            className="xsc:h-0 sticky bottom-0 translate-y-0.5 left-0 ml-4 mr-4 right-0 h-16 bg-gradient-to-t from-main-black/90 to-transparent pointer-events-none"
+          ></motion.div>
+        )}
       </motion.div>
 
       {/* <motion.div
