@@ -50,7 +50,8 @@ export default function ScheduleWithLoaderWrapper() {
 
   return (
     // <div onClick={() => setDoneLoading(true)}>
-    <div>
+    // Subtract 64px because that is height of Nav Bar
+    <div className="flex flex-col max-xsc:max-h-[calc(100dvh-64px)]">
       <AnimatePresence
         onExitComplete={() => {
           setTarOpacity(1);
@@ -67,14 +68,14 @@ export default function ScheduleWithLoaderWrapper() {
               opacity: 1,
             }}
             exit={{ opacity: 0 }}
-            transition={{ delay: 1.2, duration: 0.3 }}
+            transition={{ delay: 1.25, duration: 0.3 }}
           >
             {<LoadingIndicator />}
           </motion.div>
         )}
       </AnimatePresence>
       {displayingCalendar && portrait && (
-        <div className="pl-4 pr-4 flex justify-center text-center xsc:hidden">
+        <div className="pl-4 pr-4 flex justify-center text-center xsc:hidden pb-2">
           <motion.p
             key={portrait}
             initial={{ opacity: 0, color: "var(--color-medium-grey)" }}
@@ -101,6 +102,7 @@ export default function ScheduleWithLoaderWrapper() {
       )}
 
       <motion.div
+        className="//max-xsc:max-h-[40vh] grow max-xsc:overflow-y-auto relative xsc:flex xsc:flex-col //xsc:min-h-[calc(100dvh-64px)]"
         initial={{
           // scale: 0.9,
           y: 60,
@@ -111,7 +113,7 @@ export default function ScheduleWithLoaderWrapper() {
           y: targY,
           opacity: targOpacity,
         }}
-        transition={{ duration: 0.5, delay: 0.1, ease: [0.1, 0.1, 0.1, 1] }}
+        transition={{ duration: 0.5, delay: 0.15, ease: [0.1, 0.1, 0.1, 1] }}
       >
         <FloorScheduleCalendar setDoneLoading={setDoneLoading} />
         {/* 
@@ -133,6 +135,7 @@ export default function ScheduleWithLoaderWrapper() {
             ></script>
           </div>
         )} */}
+        <div className="xsc:h-0 sticky bottom-0 translate-y-0.5 left-0 right-0 h-16 bg-gradient-to-t from-black/80 to-transparent pointer-events-none"></div>
       </motion.div>
 
       {/* <motion.div
@@ -144,21 +147,36 @@ export default function ScheduleWithLoaderWrapper() {
         </motion.div> */}
 
       {displayingCalendar && (
-        <div className="pt-16 pr-8 pl-8 flex flex-col max-w-[670px] ml-auto mr-auto">
-          <h1 className="text-2xl font-bold text-medium-grey mt-5 mb-5">
+        <div className="pt-0 pr-8 pl-8 flex flex-col max-w-[670px] ml-auto mr-auto">
+          <motion.h1
+            className="text-2xl font-bold text-medium-grey mt-5 mb-5"
+            initial={{ y: 40, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.15, duration: 0.7, ease: [0.1, 0.1, 0, 1] }}
+          >
             More Info
-          </h1>
-          <p>This calendar is for viewing purposes only.</p>
-          <p>
+          </motion.h1>
+          <motion.p
+            initial={{ y: 40, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.7, ease: [0.1, 0.1, 0, 1] }}
+          >
+            This calendar is for viewing purposes only.
+          </motion.p>
+          <motion.p
+            initial={{ y: 40, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.25, duration: 0.7, ease: [0.1, 0.1, 0, 1] }}
+          >
             Please contact Rhonda directly for schedule requests, edits or
             inquiries. Contact information for the front desk (Rhonda) is
             available in the navigation menu.
-          </p>
+          </motion.p>
 
           <div className="ml-auto">
             <MenuOpenButton />
           </div>
-          <div className="h-16"></div>
+          <div className="h-28"></div>
         </div>
       )}
     </div>
