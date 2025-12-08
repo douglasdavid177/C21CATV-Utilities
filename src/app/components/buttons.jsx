@@ -139,6 +139,9 @@ export function NavMenuLink({
   useEffect(() => {
     setOnClient(true);
   }, []);
+  useEffect(() => {
+    setBeingHovered(false);
+  }, [path]);
 
   return (
     <Link
@@ -251,6 +254,9 @@ export function HeaderLink({ url, children }) {
   const tRouter = useTransitionRouter();
   const pathName = usePathname();
   const [beingHovered, setBeingHovered] = useState(false);
+  useEffect(() => {
+    setBeingHovered(false);
+  }, [pathName]);
 
   return (
     <Link
