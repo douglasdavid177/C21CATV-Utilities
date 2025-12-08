@@ -68,7 +68,7 @@ export default function ScheduleWithLoaderWrapper() {
               opacity: 1,
             }}
             exit={{ opacity: 0 }}
-            transition={{ delay: 1.25, duration: 0.3 }}
+            transition={{ delay: 1.45, duration: 0.25 }}
           >
             {<LoadingIndicator />}
           </motion.div>
@@ -113,7 +113,7 @@ export default function ScheduleWithLoaderWrapper() {
           y: targY,
           opacity: targOpacity,
         }}
-        transition={{ duration: 0.5, delay: 0.15, ease: [0.1, 0.1, 0.1, 1] }}
+        transition={{ duration: 0.5, delay: 0, ease: [0.1, 0.1, 0.1, 1] }}
       >
         <FloorScheduleCalendar setDoneLoading={setDoneLoading} />
         {/* 
@@ -159,21 +159,21 @@ export default function ScheduleWithLoaderWrapper() {
             className="text-2xl font-bold text-medium-grey mt-5 mb-5"
             initial={{ y: 40, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.25, duration: 0.7, ease: [0.1, 0.1, 0, 1] }}
+            transition={{ delay: 0.1, duration: 0.7, ease: [0.1, 0.1, 0, 1] }}
           >
             More Info
           </motion.h1>
           <motion.p
             initial={{ y: 40, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.7, ease: [0.1, 0.1, 0, 1] }}
+            transition={{ delay: 0.15, duration: 0.7, ease: [0.1, 0.1, 0, 1] }}
           >
             This calendar is for viewing purposes only.
           </motion.p>
           <motion.p
             initial={{ y: 40, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.35, duration: 0.7, ease: [0.1, 0.1, 0, 1] }}
+            transition={{ delay: 0.2, duration: 0.7, ease: [0.1, 0.1, 0, 1] }}
           >
             Please contact Rhonda directly for schedule requests, edits or
             inquiries. Contact information for the front desk (Rhonda) is
@@ -181,7 +181,7 @@ export default function ScheduleWithLoaderWrapper() {
           </motion.p>
 
           <div className="ml-auto">
-            <MenuOpenButton delayAmt={0.45} />
+            <MenuOpenButton delayAmt={0.3} />
           </div>
           <div className="h-28"></div>
         </div>

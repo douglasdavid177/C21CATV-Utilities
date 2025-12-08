@@ -53,7 +53,7 @@ export default function Home() {
         </p>
       </div> */}
       <div className="ml-auto mr-0 w-max">
-        <MenuOpenButton delayAmt={1.3} />
+        <MenuOpenButton delayAmt={1} />
       </div>
       <div className="h-28"></div>
     </div>
