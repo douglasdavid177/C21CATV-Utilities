@@ -73,7 +73,7 @@ export default function HeaderBar() {
         <AnimatePresence>
           {!openMenu && (
             <motion.div
-              className="pl-4 pr-4 flex gap-8 items-center"
+              className="pl-4 pr-4 flex gap-8 items-center h-9"
               initial={{ opacity: 0 }}
               animate={{
                 opacity: 1,
@@ -94,7 +94,7 @@ export default function HeaderBar() {
                 </button>
               </div>
 
-              <div className="max-sm:hidden flex gap-8 //text-base //text-medium-grey">
+              <div className="max-sm:hidden flex gap-8 //text-base //text-medium-grey h-full">
                 <HeaderLink url={"/"}>Home</HeaderLink>
                 <HeaderLink url={"/about-page"}>About</HeaderLink>
                 <HeaderLink url={"/floor-schedule"}>Floor Schedule</HeaderLink>
