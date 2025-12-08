@@ -24,11 +24,11 @@ export default function Home() {
         <PrimaryButton
           text={"Floor schedule"}
           route="/floor-schedule"
-          delayAmt={0.45}
+          delayAmt={0.6}
         />
         <div className="h-2 sm:h-4"></div>
 
-        <MenuOpenButton delayAmt={0.55} />
+        <MenuOpenButton delayAmt={0.7} />
         <div className="h-0 sm:h-20"></div>
       </div>
     </div>
