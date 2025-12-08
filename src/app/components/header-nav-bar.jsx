@@ -6,7 +6,7 @@ import { useContext, useEffect, useState } from "react";
 import { NavigationContext } from "./navigation-context";
 import NavMenu, { NavMenuBG } from "./nav-menu";
 import { AnimatePresence, motion } from "motion/react";
-import { HomeLinkWrapper } from "./buttons";
+import { HeaderLink, HomeLinkWrapper } from "./buttons";
 // import { PrimaryButton } from "./buttons";
 
 export default function HeaderBar() {
@@ -70,31 +70,43 @@ export default function HeaderBar() {
           delayAmt={0.5}
         /> */}
 
-        <div className="pl-4 pr-4 flex flex-row-reverse gap-8 items-center">
+        <AnimatePresence>
           {!openMenu && (
             <motion.div
+              className="pl-4 pr-4 flex gap-8 items-center"
               initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.25, delay: 0.1 }}
+              animate={{
+                opacity: 1,
+                transition: { duration: 0.25, delay: 0.15 },
+              }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25, delay: 0 }}
             >
-              <button
-                className="cursor-pointer z-200"
-                onClick={(e) => {
-                  e.stopPropagation(); // This prevents the button click from also activating the button click of the header bg
-                  setOpenMenu(!openMenu);
-                }}
-              >
-                <AiOutlineMenu />
-              </button>
+              <div className="flex items-center">
+                <button
+                  className="cursor-pointer z-200"
+                  onClick={(e) => {
+                    e.stopPropagation(); // This prevents the button click from also activating the button click of the header bg
+                    setOpenMenu(!openMenu);
+                  }}
+                >
+                  <AiOutlineMenu />
+                </button>
+              </div>
+
+              <div className="max-sm:hidden flex gap-8 //text-base //text-medium-grey">
+                <HeaderLink url={"/"}>Home</HeaderLink>
+                <HeaderLink url={"/about-page"}>About</HeaderLink>
+                <HeaderLink url={"/floor-schedule"}>Floor Schedule</HeaderLink>
+                {/* <h1>Home</h1>
+            <h1>About</h1>
+            <h1>Floor Schedule</h1> */}
+              </div>
             </motion.div>
           )}
+        </AnimatePresence>
 
-          {/* <h2 className="text-[#727273] text-xl sm:text-3xl">
-            Floor Time Schedule
-          </h2> */}
-        </div>
-
-        <div className="pr-4 pl-4 //sm:pr-20 relative z-5">
+        <div className="pr-4 pl-4 //sm:pr-20 relative z-5 ml-auto">
           <HomeLinkWrapper>
             <Image
               src="/C21CA-logo.svg"

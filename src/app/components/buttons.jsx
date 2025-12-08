@@ -246,3 +246,60 @@ export function HomeLinkWrapper({ children }) {
     </Link>
   );
 }
+
+export function HeaderLink({ url, children }) {
+  const tRouter = useTransitionRouter();
+  const pathName = usePathname();
+  const [beingHovered, setBeingHovered] = useState(false);
+
+  return (
+    <Link
+      className="flex items-center gap-1"
+      href={url}
+      onMouseEnter={() => {
+        setBeingHovered(true);
+      }}
+      onMouseLeave={() => {
+        setBeingHovered(false);
+      }}
+      onClick={(e) => {
+        e.preventDefault();
+        if (pathName == url) {
+          return;
+        }
+        tRouter.push(url);
+      }}
+    >
+      <span className="text-base text-medium-grey">{children}</span>
+      {url == pathName && (
+        <span>
+          <div className=" rounded-full bg-medium-grey w-2 h-2 ml-1 mr-1"></div>
+        </span>
+      )}
+      {
+        url != pathName && (
+          // (beingHovered ? (
+          <motion.span
+            className="text-base text-medium-grey h-2 w-4 flex items-center"
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: beingHovered ? 1 : 0,
+              x: beingHovered ? "0%" : "-50%",
+            }}
+            transition={{
+              ease: [0.1, 0.1, 0, 1],
+              duration: 0.15,
+            }}
+          >
+            <AiOutlineArrowRight />
+          </motion.span>
+        )
+        // ) : (
+        //   <span>
+        //     <div className=" rounded-full bg-transparent w-2 h-2"></div>
+        //   </span>
+        // ))
+      }
+    </Link>
+  );
+}
