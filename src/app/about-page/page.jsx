@@ -16,6 +16,7 @@ export default function Home() {
     >
       <div className="w-full flex justify-center items-center">
         <Image
+          priority={true}
           src="/undraw_code-inspection-gold-dark.svg"
           width={175}
           height={175}
