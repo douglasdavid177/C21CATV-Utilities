@@ -111,7 +111,7 @@ export function AnimatedHeading() {
           ease: [0.1, 0.1, 0, 1],
         }}
       >
-        About this App
+        About this Project
       </motion.h1>
     </div>
   );

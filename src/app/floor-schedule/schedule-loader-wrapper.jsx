@@ -51,7 +51,7 @@ export default function ScheduleWithLoaderWrapper() {
   return (
     // <div onClick={() => setDoneLoading(true)}>
     // Subtract 64px because that is height of Nav Bar
-    <div className="flex flex-col max-xsc:max-h-[calc(100dvh-64px)]">
+    <div className="flex flex-col max-xsc:max-h-[calc(100dvh-64px)] max-w-[1400px] ml-auto mr-auto">
       <AnimatePresence
         onExitComplete={() => {
           setTarOpacity(1);
