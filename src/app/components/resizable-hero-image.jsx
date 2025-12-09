@@ -35,7 +35,15 @@ export default function ResizableHeroImage() {
 
   useEffect(() => {});
   return (
-    <div
+    <motion.div
+      initial={{ y: 40, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{
+        duration: 0.6,
+        delay: 0.5,
+        ease: [0.1, 0.1, 0.1, 1],
+        opacity: { duration: 0.2, delay: 0.5 },
+      }}
       ref={backGroundRef}
       className="//self-end mt-auto sm:max-w-[45vw] relative w-full //h-[10000px] //h-max: h-full //flex-grow"
       style={{
@@ -58,10 +66,20 @@ export default function ResizableHeroImage() {
         />
       </div>
 
-      <div>
+      <motion.div
+        initial={{ y: 60, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{
+          duration: 0.5,
+          delay: 0.6,
+          ease: [0.1, 0.1, 0.1, 1],
+          opacity: { duration: 0.2, delay: 0.5 },
+        }}
+        className="absolute inset-0 left-[47%] mt-auto flex items-end"
+      >
         <Image
+          // className="mt-auto"
           ref={personRef}
-          className="absolute inset-0 left-[47%] mt-auto"
           src="/undraw-business-call-gold-person-only.svg"
           priority={true}
           width={600}
@@ -69,12 +87,16 @@ export default function ResizableHeroImage() {
           alt="City Graphic"
           style={
             onClient
-              ? { objectFit: "contain", height: "80%", width: "auto" }
+              ? {
+                  objectFit: "contain",
+                  width: "auto",
+                  height: bgImgHeight * 0.8,
+                }
               : ""
           }
         />
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 
   function checkIfMobile() {
