@@ -36,16 +36,16 @@ export default function ResizableHeroImage() {
   useEffect(() => {});
   return (
     <motion.div
-      initial={{ y: 40, opacity: 0 }}
+      initial={{ y: 100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{
-        duration: 0.6,
-        delay: 0.5,
+        duration: 0.5,
+        delay: 0.4,
         ease: [0.1, 0.1, 0.1, 1],
         opacity: { duration: 0.2, delay: 0.5 },
       }}
       ref={backGroundRef}
-      className="//self-end mt-auto sm:max-w-[45vw] relative w-full //h-[10000px] //h-max: h-full //flex-grow"
+      className="//self-end mt-auto sm:w-[45vw] relative w-full //h-[10000px] //h-max: h-full //flex-grow"
       style={{
         height: bgImgHeight,
       }}
@@ -67,13 +67,13 @@ export default function ResizableHeroImage() {
       </div>
 
       <motion.div
-        initial={{ y: 60, opacity: 0 }}
+        initial={{ y: 150, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{
-          duration: 0.5,
-          delay: 0.6,
+          duration: 0.6,
+          delay: 0.4,
           ease: [0.1, 0.1, 0.1, 1],
-          opacity: { duration: 0.2, delay: 0.5 },
+          // opacity: { delay: 0.2 },
         }}
         className="absolute inset-0 left-[47%] mt-auto flex items-end"
       >
