@@ -9,6 +9,7 @@ import {
   useState,
 } from "react";
 import { NavigationContext } from "./navigation-context";
+import { motion } from "motion/react";
 
 export default function ResizableHeroImage() {
   const backGroundRef = useRef(null);
@@ -41,31 +42,38 @@ export default function ResizableHeroImage() {
         height: bgImgHeight,
       }}
     >
-      <Image
-        // className="absolute inset-0"
-        src="/undraw-business-call-city-only.svg"
-        priority={true}
-        // width={384}
-        // height={384}
-        fill
-        alt="City Graphic"
-        style={{ objectFit: "fill" }}
-        // style={
-        //   false ? { objectFit: "contain", height: "auto", width: "100%" } : ""
-        // }
-      />
-      <Image
-        ref={personRef}
-        className="absolute inset-0 left-[47%] mt-auto"
-        src="/undraw-business-call-gold-person-only.svg"
-        priority={true}
-        width={600}
-        height={600}
-        alt="City Graphic"
-        style={
-          onClient ? { objectFit: "contain", height: "80%", width: "auto" } : ""
-        }
-      />
+      <div>
+        <Image
+          // className="absolute inset-0"
+          src="/undraw-business-call-city-only.svg"
+          priority={true}
+          // width={384}
+          // height={384}
+          fill
+          alt="City Graphic"
+          style={{ objectFit: "fill" }}
+          // style={
+          //   false ? { objectFit: "contain", height: "auto", width: "100%" } : ""
+          // }
+        />
+      </div>
+
+      <div>
+        <Image
+          ref={personRef}
+          className="absolute inset-0 left-[47%] mt-auto"
+          src="/undraw-business-call-gold-person-only.svg"
+          priority={true}
+          width={600}
+          height={600}
+          alt="City Graphic"
+          style={
+            onClient
+              ? { objectFit: "contain", height: "80%", width: "auto" }
+              : ""
+          }
+        />
+      </div>
     </div>
   );
 
