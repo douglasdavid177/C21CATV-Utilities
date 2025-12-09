@@ -183,7 +183,7 @@ export default function ScheduleWithLoaderWrapper() {
           <div className="ml-auto">
             <MenuOpenButton delayAmt={0.3} />
           </div>
-          <div className="h-28"></div>
+          <div className="h-16 sm:h-28"></div>
         </div>
       )}
     </div>
