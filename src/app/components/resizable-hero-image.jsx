@@ -35,68 +35,71 @@ export default function ResizableHeroImage() {
 
   useEffect(() => {});
   return (
-    <motion.div
-      initial={{ y: 100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{
-        duration: 0.5,
-        delay: 0.4,
-        ease: [0.1, 0.1, 0.1, 1],
-        opacity: { duration: 0.2, delay: 0.5 },
-      }}
+    <div
       ref={backGroundRef}
       className="//self-end mt-auto sm:w-[45vw] relative w-full //h-[10000px] //h-max: h-full //flex-grow"
-      style={{
-        height: bgImgHeight,
-      }}
     >
-      <div>
-        <Image
-          // className="absolute inset-0"
-          src="/undraw-business-call-city-only.svg"
-          priority={true}
-          // width={384}
-          // height={384}
-          fill
-          alt="City Graphic"
-          style={{ objectFit: "fill" }}
-          // style={
-          //   false ? { objectFit: "contain", height: "auto", width: "100%" } : ""
-          // }
-        />
-      </div>
-
       <motion.div
-        initial={{ y: 150, opacity: 0 }}
+        initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{
-          duration: 0.6,
+          duration: 0.5,
           delay: 0.4,
           ease: [0.1, 0.1, 0.1, 1],
-          // opacity: { delay: 0.2 },
+          opacity: { duration: 0.2, delay: 0.5 },
         }}
-        className="absolute inset-0 left-[47%] mt-auto flex items-end"
+        style={{
+          height: bgImgHeight,
+        }}
       >
-        <Image
-          // className="mt-auto"
-          ref={personRef}
-          src="/undraw-business-call-gold-person-only.svg"
-          priority={true}
-          width={600}
-          height={600}
-          alt="City Graphic"
-          style={
-            onClient
-              ? {
-                  objectFit: "contain",
-                  width: "auto",
-                  height: bgImgHeight * 0.8,
-                }
-              : ""
-          }
-        />
+        <div>
+          <Image
+            // className="absolute inset-0"
+            src="/undraw-business-call-city-only.svg"
+            priority={true}
+            // width={384}
+            // height={384}
+            fill
+            alt="City Graphic"
+            style={{ objectFit: "fill" }}
+            // style={
+            //   false ? { objectFit: "contain", height: "auto", width: "100%" } : ""
+            // }
+          />
+        </div>
+
+        <motion.div
+          initial={{ y: 150, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{
+            duration: 0.6,
+            delay: 0.4,
+            ease: [0.1, 0.1, 0.1, 1],
+            // opacity: { delay: 0.2 },
+          }}
+          className="absolute inset-0 left-[47%] mt-auto flex items-end"
+        >
+          <Image
+            // className="mt-auto"
+            ref={personRef}
+            src="/undraw-business-call-gold-person-only.svg"
+            priority={true}
+            width={600}
+            height={600}
+            alt="City Graphic"
+            style={
+              onClient
+                ? {
+                    objectFit: "contain",
+                    width: "auto",
+                    height: bgImgHeight * 0.8,
+                  }
+                : ""
+            }
+          />
+        </motion.div>
       </motion.div>
-    </motion.div>
+    </div>
   );
 
   function checkIfMobile() {
