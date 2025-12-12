@@ -32,11 +32,26 @@ export default function RootLayout({ children }) {
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased `}
         >
-          <NavContext>
-            {children}
-            {/* <div style={{ viewTransitionName: "nav-button" }}> */}
-            {/* </div> */}
-          </NavContext>
+          {true && (
+            <div>
+              Nevermind, management told me I was stepping on their toes and the
+              idea was not just unhelpful, useless, unappreciated, but actually
+              offensive. If the idea of this tool is something you would like
+              expaned upon, please remind yourself that providing free help with
+              no expectation is a BAD THING and should be DISCOURAGED. If you're
+              curious about the floor shedule, take a picture of the physical
+              document like usual.
+            </div>
+          )}
+          {false && (
+            <div>
+              <NavContext>
+                {children}
+                {/* <div style={{ viewTransitionName: "nav-button" }}> */}
+                {/* </div> */}
+              </NavContext>
+            </div>
+          )}
         </body>
       </html>
     </ViewTransitions>
