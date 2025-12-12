@@ -33,7 +33,7 @@ export default function RootLayout({ children }) {
           className={`${geistSans.variable} ${geistMono.variable} antialiased `}
         >
           {true && (
-            <div>
+            <div className="p-4">
               Nevermind, management told me I was stepping on their toes and the
               idea was not just unhelpful, useless, unappreciated, but actually
               offensive. If the idea of this tool is something you would like
